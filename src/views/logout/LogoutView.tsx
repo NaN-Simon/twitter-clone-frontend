@@ -1,21 +1,32 @@
 import React, { FC } from 'react';
 import { Grid, useTheme } from '@mui/material';
+
 import Navigation from '@/components/navigation/Navigation';
 import PageHeader from '@/components/headers/PageHeader';
-import UnderLine from '@/common/UnderLine';
 import OfferToRegister from '@/components/offerToRegister/OfferToRegister';
+
+import UnderLine from '@/common/UnderLine';
+
 import Description from '@/temp/Description';
 
 const LogoutView: FC = () => {
   const theme = useTheme();
   return (
     <Grid
+      className='view-logout'
       container
-      gap={2}
-      sx={{ justifyContent: 'center', flexWrap: 'nowrap', paddingTop: '20px' }}
+      gap={{ xs: 'initial', sm: 1, md: 2, lg: 2 }}
+      sx={{ justifyContent: 'center', flexWrap: 'nowrap' }}
     >
-      <Grid item sx={{ width: { md: '75px', lg: '200px' } }}>
-        <Navigation plan = 'unauthorized' activeItem="View" />
+      <Grid
+        className='view-logout-menu'
+        item
+        sx={{
+          minWidth: { xs: '35px', sm: '35px', md: '200px', lg: '200px' },
+          position: 'relative',
+          pt: 1
+        }}>
+        <Navigation plan='unauthorized' activeItem="View" />
       </Grid>
       <Grid
         item

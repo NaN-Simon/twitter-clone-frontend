@@ -1,8 +1,9 @@
-import * as React from 'react';
-import { FC } from 'react';
+import React, { FC } from 'react';
 import Image from 'next/image';
 import { Box, useTheme } from '@mui/material';
+
 import defaultAvatar from '@/assets/images/BlankAvatar.jpg';
+
 interface IAvatar {
   img?: string | null;
   alt?: string | null;
@@ -14,6 +15,7 @@ const CustomAvatar: FC<IAvatar> = ({ img, alt, width = 48, height = 48 }) => {
   const theme = useTheme();
   return (
     <Box
+      className='component-custom-avatar'
       sx={{
         outline: `5px solid ${theme.palette.primary.light}`,
         borderRadius: '50%',

@@ -1,11 +1,15 @@
 import React, { FC } from 'react';
 import { Box, Button, CircularProgress, Container, Menu, MenuItem, Typography } from '@mui/material';
-import { useGetProfileAvatarQuery } from '@/query/profile/avatar.query';
-import CustomAvatar from '../../avatar/CustomAvatar';
-import TaggedText from '@/common/TaggedText';
-import VerifiedIcon from '../../../ui/icon/VerifiedIcon';
-import { useLogoutQuery } from '@/query/authorization/authorization.query';
 import { useRouter } from 'next/router';
+
+import { useGetProfileAvatarQuery } from '@/query/profile/avatar.query';
+import { useLogoutQuery } from '@/query/authorization/authorization.query';
+
+import CustomAvatar from '@/components/avatar/CustomAvatar';
+
+import TaggedText from '@/common/TaggedText';
+
+import VerifiedIcon from '@/ui/icon/VerifiedIcon';
 
 interface IAccountBar {
   name?: string;
@@ -40,11 +44,7 @@ const AccountBar: FC<IAccountBar> = ({
   if (!name || !tag) return (<></>)
 
   return (
-    <Container disableGutters sx={{ display: 'flex', flexDirection: 'row', gap: 1 }} >
-
-      {/* отображение аватара или бланка */}
-      {hasAvatar && <CustomAvatar img={avatarUrl} alt='AvatarAlt' width={30} height={30} />}
-
+    <Container disableGutters  >
       {/* имя и тэг пользователя, всплывающее меню */}
       <Button
         id="basic-button"
@@ -52,7 +52,17 @@ const AccountBar: FC<IAccountBar> = ({
         aria-haspopup="true"
         aria-expanded={open ? 'true' : undefined}
         onClick={handleClick}
+        sx={{
+          display: 'flex',
+          flexDirection: 'row',
+          gap: 1,
+          m: 0,
+          p: 0,
+          minWidth: 'auto'
+        }}
       >
+        {/* отображение аватара или бланка */}
+        {hasAvatar && <CustomAvatar img={avatarUrl} alt='AvatarAlt' width={30} height={30} />}
         <Box
           sx={{
             display: { xs: 'none', md: 'flex', lg: 'flex' },
@@ -83,8 +93,14 @@ const AccountBar: FC<IAccountBar> = ({
           }
         }}
       >
-        <MenuItem onClick={()=>{handleClose();push('/profile')}}>Profile</MenuItem>
-        <MenuItem onClick={()=>{handleClose();logout();push('/logout')}}>Logout</MenuItem>
+        <MenuItem onClick={() => {
+          handleClose();
+          push('/profile')
+        }}>Profile</MenuItem>
+        <MenuItem onClick={() => {
+          handleClose();
+          logout(); push('/logout')
+        }}>Logout</MenuItem>
       </Menu>
     </Container>
   );

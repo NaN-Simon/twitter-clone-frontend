@@ -1,5 +1,6 @@
 import React, { FC } from 'react';
 import { AppBar, Toolbar, useTheme } from '@mui/material';
+
 import { authorizedNavigationList, unauthorizedNavigationList } from '@/components/navigation/configNavigation';
 import NavigationItem from './NavigationItem';
 
@@ -20,23 +21,24 @@ const Navigation: FC<INavigation> = ({ plan = 'unauthorized', activeItem }) => {
       className='component-navigation'
       position="relative"
       sx={{
-        width: 'auto',
+        width: 'fit-content',
         background: theme.palette.primary.light,
         boxShadow: 'none',
       }}
     >
-        <Toolbar
-          disableGutters
-          sx={{ display: 'flex', flexDirection: 'column', alignItems: 'start' }}
-        >
-          {planView.map((navItem: INavigationElement) => (
-            <NavigationItem
-              key={navItem.title}
-              navItem={navItem}
-              isActiveItem={activeItem === navItem.title}
-            />
-          ))}
-        </Toolbar>
+      <Toolbar
+        className='component-navigation-toolbar'
+        disableGutters
+        sx={{ display: 'flex', flexDirection: 'column', alignItems: 'start', gap: 3 }}
+      >
+        {planView.map((navItem: INavigationElement) => (
+          <NavigationItem
+            key={navItem.title}
+            navItem={navItem}
+            isActiveItem={activeItem === navItem.title}
+          />
+        ))}
+      </Toolbar>
     </AppBar>
   );
 };

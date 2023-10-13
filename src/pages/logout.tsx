@@ -1,14 +1,14 @@
 import React from 'react';
+import { Container } from '@mui/material';
 import { DefaultSeo } from 'next-seo';
 import SEO from '../../next-seo.config';
 import LogoutView from '@/views/logout/LogoutView';
-import { Container } from '@mui/material';
 
 const Logout = () => {
   return (
     <>
       <DefaultSeo title="Welcome in to Twitter" {...SEO} />
-      <Container>
+      <Container className='page-logout' disableGutters>
         <LogoutView />
       </Container>
     </>

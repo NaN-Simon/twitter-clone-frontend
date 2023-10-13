@@ -1,9 +1,12 @@
 import React, { FC } from 'react';
 import { Box, Grid, useTheme } from '@mui/material';
+
 import { useGetAuthorizedUserDataQuery } from '@/query/profile/authorizedUserData.query';
+
+import UnderLine from '@/common/UnderLine';
+
 import Navigation from '@/components/navigation/Navigation';
 import News from '@/components/news/News';
-import UnderLine from '@/common/UnderLine';
 import WhoToFollow from '@/components/whoToFollow/WhoToFollow';
 import AccountBar from '@/components/headers/AccountBar/AccountBar';
 import Search from '@/components/search/Search';
@@ -16,13 +19,17 @@ const ProfileView: FC = () => {
     <Grid
       className='view-explore'
       container
-      gap={2}
-      sx={{ justifyContent: 'center', flexWrap: 'nowrap'}}
+      gap={{ xs: 'initial', sm: 1, md: 2, lg: 2 }}
+      sx={{ justifyContent: 'center', flexWrap: 'nowrap' }}
     >
       <Grid
         className='view-explore-menu'
         item
-        sx={{ width: { xs: '68px', sm: '68px', md: '200px', lg: '200px' }, position: 'relative' }} >
+        sx={{
+          minWidth: { xs: '35px', sm: '35px', md: '200px', lg: '200px' },
+          position: 'relative',
+        }}
+      >
         <Box
           sx={{
             display: 'flex',
@@ -31,7 +38,7 @@ const ProfileView: FC = () => {
             position: 'fixed',
             height: '100vh',
             width: 'inherit',
-            pb: 2,
+            py: 1,
           }}>
           <Navigation plan='authorized' activeItem="Explore" />
           <AccountBar isLoading={profileDataIsLoading} hasAvatar isVertical name={profileData && profileData.username} tag={profileData && profileData.username} />

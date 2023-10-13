@@ -1,11 +1,6 @@
-import {
-  Button,
-  IconButton,
-  MenuItem,
-  useTheme,
-} from '@mui/material';
 import React, { FC } from 'react';
 import { useRouter } from 'next/router';
+import { Button, IconButton, MenuItem, Typography, useTheme } from '@mui/material';
 
 import { INavigationItem } from './types';
 
@@ -15,38 +10,35 @@ const NavigationItem: FC<INavigationItem> = ({ navItem, isActiveItem }) => {
 
   return (
     <MenuItem
+    className='component-navigationItem'
       disableGutters
       key={navItem.title}
       onClick={() => push(navItem.url)}
       sx={{
         display: { xs: 'flex', md: 'flex' },
-        flexDirection: { xs: 'none', md: 'row' },
-        gap: 2,
         justifyContent: 'start',
         alignItems: 'center',
-        px: 1.5,
-        my: 1.5,
+        gap: 2,
+        width: 'fit-content',
+        p: 0,
       }}
     >
       <IconButton sx={{ minWidth: '35px', m: 0, p: 0, }} color="secondary" > {navItem.icon}
       </IconButton>
-      <Button
-        sx={{
-          display: { xs: 'none', sm: 'none', md: 'flex', lg: 'flex' },
-          justifyContent: 'flex-start',
-          gap: '10px 0',
-          mx: 0,
-          p: 0,
-          fontFamily: theme.typography.h3.fontFamily,
-          fontWeight: theme.typography.h3.fontWeight,
-          fontSize: theme.typography.h3.fontSize,
+      <Button sx={{
+        display: { xs: 'none', sm: 'none', md: 'flex', lg: 'flex' },
+        justifyContent: 'flex-start',
+        m: 0,
+        p: 0,
+      }}>
+        <Typography variant="h3" sx={{
           color: isActiveItem
             ? theme.palette.primary.main
             : theme.palette.primary.dark,
           cursor: 'pointer',
-        }}
-      >
-        {navItem.title}
+        }}>
+          {navItem.title}
+        </Typography>
       </Button>
     </MenuItem>
   );

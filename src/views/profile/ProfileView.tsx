@@ -1,6 +1,8 @@
 import React, { FC } from 'react';
-import { useGetAuthorizedUserDataQuery } from '@/query/profile/authorizedUserData.query';
 import { Box, Grid, useTheme } from '@mui/material';
+
+import { useGetAuthorizedUserDataQuery } from '@/query/profile/authorizedUserData.query';
+
 import PageHeader from '@/components/headers/PageHeader';
 import Navigation from '@/components/navigation/Navigation';
 import News from '@/components/news/News';
@@ -18,14 +20,14 @@ const ProfileView: FC = () => {
     <Grid
       className='view-profile'
       container
-      gap={2}
+      gap={{ xs: 'initial', sm: 1, md: 2, lg: 2 }}
       sx={{ justifyContent: 'center', flexWrap: 'nowrap'}}
     >
       <Grid
         className='view-profile-menu'
         item
         sx={{
-          width: { xs: '68px', sm: '68px', md: '200px', lg: '200px' },
+          minWidth: { xs: '35px', sm: '35px', md: '200px', lg: '200px' },
           position: 'relative'
         }}
       >
@@ -37,7 +39,7 @@ const ProfileView: FC = () => {
             position: 'fixed',
             height: '100vh',
             width: 'inherit',
-            pb: 2,
+            py: 1,
           }}>
           <Navigation plan='authorized' activeItem="Profile" />
           <AccountBar
@@ -49,7 +51,6 @@ const ProfileView: FC = () => {
           />
         </Box>
       </Grid>
-
       <Grid
         className='view-profile-content'
         item
