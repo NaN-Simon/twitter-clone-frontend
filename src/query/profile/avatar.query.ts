@@ -1,12 +1,14 @@
 import { getProfileAvatar } from "@/services/profileService/profileService"
 import { useQuery } from "react-query"
+import demoAvatar from '@/demoData/avatardemo1694626287063_INl3HaWCkDQ.jpg'
 
 const profileConfig = {
   getProfileAvatar: {
     key: 'getProfileAvatar',
     request: async () => {
-      const response = await getProfileAvatar()
-      return response.data
+      // const response = await getProfileAvatar()
+      // return response.data
+      return demoAvatar
     },
   },
 }

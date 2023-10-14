@@ -6,11 +6,12 @@ import { useQuery } from 'react-query'
 
 export const useGetSearchUsersListQuery = (
   searchQueryData: ISearchQueryData
-) => {
-  return useQuery({
+  ) => {
+    return useQuery({
     queryKey: ['getSearchUsersList', searchQueryData],
     queryFn: async () => {
       const response = await getUsersList(searchQueryData)
+      console.log(response.data);
       return response.data
     },
     keepPreviousData: true,

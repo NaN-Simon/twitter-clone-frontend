@@ -24,8 +24,8 @@ const CustomBanner: FC<ICustomBanner> = ({ img, alt }) => {
         <Image
           fill
           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-          placeholder="blur"
-          blurDataURL={img && img}
+          // placeholder="blur"
+          // blurDataURL={img && img}
           style={{ objectFit: 'cover' }}
           src={img && img}
           alt={alt ? alt : 'defaultBanner'} />

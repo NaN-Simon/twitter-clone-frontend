@@ -44,7 +44,7 @@ const AccountBar: FC<IAccountBar> = ({
   if (!name || !tag) return (<></>)
 
   return (
-    <Container disableGutters  >
+    <Container disableGutters >
       {/* имя и тэг пользователя, всплывающее меню */}
       <Button
         id="basic-button"
@@ -80,6 +80,7 @@ const AccountBar: FC<IAccountBar> = ({
       </Button>
 
       <Menu
+        disableScrollLock
         id="basic-menu"
         anchorEl={anchorEl}
         open={open}
