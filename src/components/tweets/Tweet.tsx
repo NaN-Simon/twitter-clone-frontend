@@ -4,8 +4,8 @@ import CustomAvatar from '@/components/avatar/CustomAvatar';
 import UserHeader from '@/components/headers/UserHeader';
 import PassedTime from '@/common/PassedTime';
 import TweetContent from './TweetContent';
-import MoreActionButton from '@/components/tweets/MoreActionButton';
-import TweetWidgets from './TweetWidgets';
+import MoreActionButton from '@/components/tweets/widgets/buttons/ButtonMore';
+import TweetWidgets from './widgets/TweetWidgets';
 import { ITweet } from '@/components/tweets/types';
 
 const Tweet: FC<ITweet> = ({

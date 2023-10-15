@@ -5,7 +5,7 @@ import Tweet from './Tweet';
 import Retweet from './Retweet';
 import { IDataTweet, IDataTweets } from './types';
 
-const Tweets: FC<IDataTweets> = ({ tweets }, index) => {
+const TweetAndRetweetList: FC<IDataTweets> = ({ tweets }, index) => {
 
   return (
     <Container
@@ -31,4 +31,4 @@ const Tweets: FC<IDataTweets> = ({ tweets }, index) => {
   );
 };
 
-export default Tweets;
+export default TweetAndRetweetList;

@@ -1,5 +1,6 @@
 import React, { FC } from 'react';
-import MoreActionButtonTemplate from './templates/MoreActionButtonTemplate';
+import ButtonMoreTemplate from './templates/ButtonMoreTemplate';
+
 import { useDeleteTweetMutation } from '@/query/tweet/delete.mutation';
 import { useDeleteReplyMutation } from '@/query/reply/deleteReply.mutation';
 import { useDeleteRetweetMutation } from '@/query/retweet/deleteRetweet.mutation';
@@ -8,6 +9,7 @@ interface IMoreActionButton {
   id: number;
   type: 'tweet' | 'retweet' | 'reply'
 }
+
 const MoreActionButton: FC<IMoreActionButton> = ({ id, type }) => {
   const { mutateAsync: mutateDeleteTweet } = useDeleteTweetMutation();
   const { mutateAsync: mutateDeleteReply } = useDeleteReplyMutation()
@@ -19,7 +21,7 @@ const MoreActionButton: FC<IMoreActionButton> = ({ id, type }) => {
     type === 'retweet' && await mutateRetweetReply(id);
   };
 
-  return <MoreActionButtonTemplate onDelete={onDelete} />;
+  return <ButtonMoreTemplate onDelete={onDelete} />;
 };
 
 export default MoreActionButton;

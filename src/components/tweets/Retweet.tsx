@@ -6,9 +6,9 @@ import UserHeader from '@/components/headers/UserHeader';
 import PassedTime from '@/common/PassedTime';
 import RetweetSVG from '@/assets/icons/Retweet.svg';
 import TweetContent from './TweetContent';
-import TweetWidgets from './TweetWidgets';
+import TweetWidgets from './widgets/TweetWidgets';
 import { ITweet } from '@/components/tweets/types';
-import MoreActionButton from './MoreActionButton';
+import MoreActionButton from './widgets/buttons/ButtonMore';
 const Retweet: FC<ITweet> = ({
   id,
   isLiked,

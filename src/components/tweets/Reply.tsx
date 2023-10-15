@@ -5,9 +5,9 @@ import UserHeader from '@/components/headers/UserHeader';
 import PassedTime from '@/common/PassedTime';
 import TweetContent from './TweetContent';
 import { IDataReply } from './types';
-import TweetWidgets from './TweetWidgets';
+import TweetWidgets from './widgets/TweetWidgets';
 import TaggedText from '@/common/TaggedText';
-import MoreActionButton from './MoreActionButton';
+import MoreActionButton from './widgets/buttons/ButtonMore';
 const Reply: FC<IDataReply> = ({
   id,
   isLiked,

@@ -1,0 +1,39 @@
+.button{
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-width: 40px;
+  padding: 0;
+  background: none!important;
+  border: none;
+  font-family: inherit;
+}
+
+.button-container{
+  position: relative;
+  width: fit-content;
+  margin: 0;
+  padding: 0;
+}
+
+.button-hover{
+  position: absolute;
+  padding: 4px;
+  left: 0;
+  bottom: -26px;
+  font-size: 14px;
+  font-family: inherit;
+  color: #ffffff;
+  background: #495a69b3;
+  border-radius: 4px;
+  animation: showa 0.5s forwards;
+}
+
+@keyframes showa {
+  0%{
+    opacity: 0;
+  }
+  100%{
+    opacity: 1;
+  }
+}

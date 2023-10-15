@@ -1,13 +1,14 @@
 import React, { FC } from 'react';
 import { Button, Menu, MenuItem, useTheme } from '@mui/material';
+
 import MoreNoBorderSVG from '@/assets/icons/MoreNoBorder.svg';
 import Delete from '@/assets/icons/Delete.svg';
 
-interface IMoreActionButtonTemplate {
+interface IButtonMoreTemplate {
   onDelete: () => void;
 }
 
-const MoreActionButtonTemplate: FC<IMoreActionButtonTemplate> = ({
+const ButtonMoreTemplate: FC<IButtonMoreTemplate> = ({
   onDelete,
 }) => {
   const theme = useTheme();
@@ -67,4 +68,4 @@ const MoreActionButtonTemplate: FC<IMoreActionButtonTemplate> = ({
   );
 };
 
-export default MoreActionButtonTemplate;
+export default ButtonMoreTemplate;

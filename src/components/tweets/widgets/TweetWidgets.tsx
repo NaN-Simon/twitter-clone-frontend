@@ -2,8 +2,8 @@ import React, { FC } from 'react';
 import { Container } from '@mui/material';
 import ButtonLike from './buttons/ButtonLike';
 import ButtonViews from './buttons/ButtonViews';
-import ButtonRetweet from '@/components/tweets/buttons/ButtonRetweet';
-import ButtonReply from '@/components/tweets/buttons/ButtonReply';
+import ButtonRetweet from '@/components/tweets/widgets/buttons/ButtonRetweet';
+import ButtonReply from '@/components/tweets/widgets/buttons/ButtonReply';
 import ButtonShare from './buttons/ButtonShare';
 import { ITweetWidgets } from '@/components/tweets/types';
 
@@ -21,12 +21,14 @@ const TweetWidgets: FC<ITweetWidgets> = ({
 
   return (
     <Container
+      className='component-tweet-widgets'
       disableGutters
       sx={{
         display: 'flex',
         flexDirection: 'raw',
         flexWrap: 'wrap',
         justifyContent: 'space-between',
+        alignItems: 'center'
       }}
     >
       <ButtonReply replyTo={replyTo && replyTo} replyToId={id} replies={replies} />
