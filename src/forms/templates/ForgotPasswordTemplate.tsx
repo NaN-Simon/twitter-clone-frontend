@@ -8,11 +8,22 @@ import {
 } from '@mui/material';
 import Image from 'next/image';
 import Link from 'next/link';
+import { useState } from 'react';
 
-const ForgotPasswordForm = () => {
+const ForgotPasswordTemplate = () => {
   const theme = useTheme();
+  const [value, setValue] = useState('')
+
+  const onSubmitForm = (event: React.FormEvent) => {
+    event.preventDefault();
+    console.log(`submitted: ${value}`);
+  }
+
   return (
-    <Box
+    <Container
+      disableGutters
+      component="form"
+      onSubmit={onSubmitForm}
       sx={{
         position: 'absolute',
         top: '50%',
@@ -54,10 +65,12 @@ const ForgotPasswordForm = () => {
         <TextField
           InputProps={{ sx: { height: 70 } }}
           placeholder="Email address"
+          onChange={(e)=>setValue(e.target.value)}
         />
 
         <Button
           variant="contained"
+          type="submit"
           fullWidth
           sx={{
             borderRadius: '100px',
@@ -80,7 +93,7 @@ const ForgotPasswordForm = () => {
             mt: '15px',
           }}
         >
-          <Link href="./../login" style={{ color: theme.palette.primary.main }}>
+          <Link href="/signIn" style={{ color: theme.palette.primary.main }}>
             <Typography
               variant="h4"
               sx={{
@@ -93,8 +106,8 @@ const ForgotPasswordForm = () => {
           </Link>
         </Box>
       </Box>
-    </Box>
+    </Container>
   );
 };
 
-export default ForgotPasswordForm;
+export default ForgotPasswordTemplate;
