@@ -4,7 +4,7 @@ import SEO from '../../next-seo.config';
 import type { AppProps } from 'next/app'
 import { QueryClient, QueryClientProvider } from 'react-query'
 import { ThemeProvider } from '@mui/material/styles'
-import theme from '../theme/theme'
+import theme from '@/theme/theme'
 import '@/styles/globals.css'
 
 export default function App({ Component, pageProps }: AppProps) {

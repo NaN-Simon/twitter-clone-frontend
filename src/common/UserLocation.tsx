@@ -1,11 +1,5 @@
 import React, { FC } from 'react';
-import {
-  Box,
-  IconButton,
-  ListItemIcon,
-  Typography,
-  useTheme,
-} from '@mui/material';
+import { Box, IconButton, ListItemIcon, Typography, useTheme } from '@mui/material';
 import LocationSVG from '@/assets/icons/Location.svg';
 
 interface IUserLocation {
@@ -14,6 +8,7 @@ interface IUserLocation {
 
 const UserLocation: FC<IUserLocation> = ({ userLocation }) => {
   const theme = useTheme();
+  
   return (
     <Box
       sx={{
