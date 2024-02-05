@@ -1,17 +1,17 @@
 import React, { FC } from 'react';
-import Avatar from '@/components/Avatar';
+import CustomAvatar from '@/components/avatar/CustomAvatar';
 import { Box, Paper, Typography } from '@mui/material';
 import { Container, useTheme } from '@mui/system';
 import TaggedText from '@/common/TaggedText';
 import Location from '../Location';
-import JoinDate from '../JoinDate';
+import JoinedDate from '@/common/JoinedDate';
 interface IUserInfoTemplate {
   avatarUrl?: string;
   username: string | 'null';
   tag: string | 'null';
   bio?: string;
   location?: string;
-  joinDate?: string;
+  joinedDate?: string;
 }
 
 const UserInfoTemplate: FC<IUserInfoTemplate> = ({
@@ -20,7 +20,7 @@ const UserInfoTemplate: FC<IUserInfoTemplate> = ({
   tag,
   bio,
   location,
-  joinDate,
+  joinedDate,
 }) => {
   const theme = useTheme();
   return (
@@ -36,7 +36,7 @@ const UserInfoTemplate: FC<IUserInfoTemplate> = ({
       ></Paper>
       <Box display="flex" flexDirection="column" gap={1} mx={2}>
         <Box marginTop="-75px">
-          <Avatar width={150} height={150} img={avatarUrl} alt={avatarUrl} />
+          <CustomAvatar width={150} height={150} img={avatarUrl} alt={avatarUrl} />
         </Box>
         <Typography variant="h2">{username}</Typography>
         {tag && <TaggedText color="tag.contrastText" tagSymbol="@" text={tag} />}
@@ -48,7 +48,7 @@ const UserInfoTemplate: FC<IUserInfoTemplate> = ({
         )}
         <Box sx={{ display: 'flex', flexDirection: 'row', gap: 1 }}>
           {location && <Location location={location} />}
-          {joinDate && <JoinDate joinDate={joinDate} />}
+          {joinedDate && <JoinedDate joinedDate={joinedDate} />}
         </Box>
       </Box>
     </Container>

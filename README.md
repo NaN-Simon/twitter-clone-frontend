@@ -62,3 +62,7 @@ Next, open [http://localhost:3000](http://localhost:3000) with your browser to s
 useGetAuthorizedUserDataQuery - дата авторизованного пользователя, не принимает пропсы. Возвращает: profileId, username, email, followers, followees, joinDate, bio, location, website, birthDate, avatarUrl, bannerUrl
 
 useGetProfilePathIdByEmailQuery - pathId любого пользователя, принимает email. Возвращает pathId
+
+## Figma
+
+[Link](https://www.figma.com/file/nAWnZ0tbREj1erZ0e6nFsz/UI-Twitter-Web-(Community)?type=design&node-id=0-1&mode=design&t=jA0h6EaNIdxqmBSW-0)

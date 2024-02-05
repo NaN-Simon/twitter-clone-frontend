@@ -1,11 +1,10 @@
+/* eslint-disable react/display-name */
 
 import { render, screen } from '@testing-library/react'
 import UserLocation from '@/../src/common/UserLocation'
 
-const LocationSvg = () => <svg>Location SVG</svg>;
-LocationSvg.displayName = "LocationSvg";
+jest.mock('@/assets/icons/Location.svg', () => () => <svg>Location SVG</svg>);
 
-jest.mock('@/assets/icons/Location.svg', () => LocationSvg);
 
 test('renders user location', () => {
   render(<UserLocation userLocation="New York" />);
