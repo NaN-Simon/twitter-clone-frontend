@@ -28,12 +28,7 @@ const authorizationConfig = {
 
 export const useSignUpMutation = () => {
   const { registerConfig: config } = authorizationConfig;
-  const state = useMutation(config.request, {
-    onSuccess(data) {
-      console.log('регистрация начата', data);
-    },
-  });
-
+  const state = useMutation(config.request);
   return state;
 };
 

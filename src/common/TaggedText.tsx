@@ -2,12 +2,12 @@ import { Typography } from '@mui/material';
 import React, { FC } from 'react';
 
 interface ITaggedText {
-  text: string;
+  text?: string;
   tagSymbol?: string;
   color?: string;
 }
 const TaggedText: FC<ITaggedText> = ({
-  text = 'null',
+  text = '',
   tagSymbol = '@',
   color = 'inherit',
 }) => {

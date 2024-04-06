@@ -34,7 +34,7 @@ const Retweet: FC<ITweet> = ({
       disableGutters
       sx={{ display: 'flex', flexDirection: 'row', gap: '0 13px', padding: '10px 15px' }}
     >
-      <CustomAvatar img={profile.avatarUrl} alt={profile.avatarUrl} />
+      <CustomAvatar src={profile.avatarUrl} />
       <Box sx={{ width: '100%' }}>
         <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
           <Box sx={{ display: 'flex', flexDirection: 'column', gap: 1 }}>

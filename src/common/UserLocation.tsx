@@ -3,12 +3,12 @@ import { Box, IconButton, ListItemIcon, Typography, useTheme } from '@mui/materi
 import LocationSVG from '@/assets/icons/Location.svg';
 
 interface IUserLocation {
-  userLocation: string;
+  userLocation?: string;
 }
 
-const UserLocation: FC<IUserLocation> = ({ userLocation }) => {
+const UserLocation: FC<IUserLocation> = ({ userLocation = '' }) => {
   const theme = useTheme();
-  
+
   return (
     <Box
       sx={{

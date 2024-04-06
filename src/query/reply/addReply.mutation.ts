@@ -20,7 +20,7 @@ const replyConfig = {
       })
 
       await formData.append('request', blob)
-      await formData.append('files', requestData.file[0])
+      requestData.file && (await formData.append('files', requestData.file[0]))
 
       const response = await addReply(formData, replyToId)
       return response.data

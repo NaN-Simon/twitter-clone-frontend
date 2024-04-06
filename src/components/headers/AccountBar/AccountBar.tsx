@@ -2,7 +2,7 @@ import React, { FC } from 'react';
 import { Box, Button, CircularProgress, Container, Menu, MenuItem, Typography } from '@mui/material';
 import { useRouter } from 'next/router';
 
-import { useGetProfileAvatarQuery } from '@/query/profile/avatar.query';
+// import { useGetProfileAvatarQuery } from '@/query/profile/avatar.query'; /* image-сервис удален */
 import { useLogoutQuery } from '@/query/authorization/authorization.query';
 
 import CustomAvatar from '@/components/avatar/CustomAvatar';
@@ -28,7 +28,7 @@ const AccountBar: FC<IAccountBar> = ({
   isVertical,
   isLoading,
 }) => {
-  const { data: avatarUrl } = useGetProfileAvatarQuery();
+  // const { data: avatarUrl } = useGetProfileAvatarQuery(); /* image-сервис удален */
   const { refetch: logout } = useLogoutQuery();
   const { push } = useRouter();
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
@@ -62,7 +62,7 @@ const AccountBar: FC<IAccountBar> = ({
         }}
       >
         {/* отображение аватара или бланка */}
-        {hasAvatar && <CustomAvatar img={avatarUrl} alt='AvatarAlt' width={30} height={30} />}
+        {hasAvatar && <CustomAvatar src={null} width={30} height={30} />}
         <Box
           sx={{
             display: { xs: 'none', md: 'flex', lg: 'flex' },
@@ -90,10 +90,14 @@ const AccountBar: FC<IAccountBar> = ({
         }}
         sx={{
           '& .MuiMenu-paper': {
-            top: '770px!important',
+            top: '740px!important',
           }
         }}
       >
+        <MenuItem sx={{ display: 'flex', justifyContent: 'space-between', gap: '10px' }} >
+          <span>JWT: </span>
+          <input type="text" value={localStorage.getItem('auth-token') || 'notJWT'} />
+        </MenuItem>
         <MenuItem onClick={() => {
           handleClose();
           push('/profile')

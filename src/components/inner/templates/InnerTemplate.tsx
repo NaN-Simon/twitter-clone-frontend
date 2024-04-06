@@ -16,8 +16,7 @@ import EmojiButton from './widgetBar/EmojiButton';
 import ScheduleButton from './widgetBar/ScheduleButton';
 
 interface IInnerTemplate {
-  avatarUrl?: string;
-  avatarAlt?: string;
+  avatarUrl?: string | null;
   control: Control<IAddTweetRequest>;
   register: UseFormRegister<IAddTweetRequest>;
   handleSubmit: UseFormHandleSubmit<IAddTweetRequest>;
@@ -26,7 +25,6 @@ interface IInnerTemplate {
 
 const InnerTemplate: FC<IInnerTemplate> = ({
   avatarUrl,
-  avatarAlt,
   control,
   register,
   handleSubmit,
@@ -46,7 +44,7 @@ const InnerTemplate: FC<IInnerTemplate> = ({
         padding: '10px 15px',
       }}
     >
-      {avatarUrl && <CustomAvatar img={avatarUrl} alt={avatarAlt} />}
+      {avatarUrl && <CustomAvatar src={avatarUrl} />}
       <Box
         sx={{
           display: 'flex',

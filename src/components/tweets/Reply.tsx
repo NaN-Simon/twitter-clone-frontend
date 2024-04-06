@@ -53,7 +53,7 @@ const Reply: FC<IDataReply> = ({
     >
       <Box sx={{ display: 'flex', flexDirection: 'row', gap: 2 }}>
         <Box position="relative">
-          <CustomAvatar img={replyProfile.avatarUrl} alt={replyProfile.avatarUrl} />
+          <CustomAvatar src={replyProfile.avatarUrl} />
           <Paper
             sx={{
               background: theme.palette.secondary.main,
@@ -109,7 +109,7 @@ const Reply: FC<IDataReply> = ({
       </Box>
       <Box>
         <Box display="flex" flexDirection="row" gap={2}>
-          <CustomAvatar img={profile.avatarUrl} alt={profile.avatarUrl} />
+          <CustomAvatar src={profile.avatarUrl} />
           <Box
             sx={{
               display: 'flex',

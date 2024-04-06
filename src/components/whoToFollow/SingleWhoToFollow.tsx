@@ -47,6 +47,7 @@ const SingleWhoToFollow: FC<IWhoToFollow> = ({
             width: '48px',
             height: '48px',
             flex: '0 0 auto',
+            background: '#000000'
           }}
         >
           <Image

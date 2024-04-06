@@ -1,5 +1,5 @@
 import React, { FC } from 'react';
-import img from '@/assets/images/BlankAvatar.jpg';
+import img from '@/assets/images/blankAvatar.png';
 import { Box, Container, useTheme } from '@mui/material';
 import UnderLine from '@/common/UnderLine';
 import Header from '@/components/headers/PageHeader';

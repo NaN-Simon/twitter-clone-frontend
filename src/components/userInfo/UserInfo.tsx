@@ -14,7 +14,23 @@ interface IUserInfo {
   hasEditButton?: boolean
 }
 
-const UserInfo: FC<IUserInfo> = ({ userInfoData, hasEditButton }) => {
+const initialUserInfoData = {
+  profileId: '',
+  username: '',
+  email: '',
+  followers: 0,
+  followees: 0,
+  joinDate: '',
+  bio: '',
+  location: '',
+  website: '',
+  birthDate: '',
+  avatarUrl: '',
+  bannerUrl: '',
+}
+
+const UserInfo: FC<IUserInfo> = ({ userInfoData = initialUserInfoData, hasEditButton }) => {
+  const { username, bio, location, joinDate, avatarUrl/* , bannerUrl */ } = userInfoData /* image-сервис удален */
   const [openEditUserInfo, setOpenEditUserInfo] = useState(false)
 
   const editButtonStyles = {
@@ -38,7 +54,7 @@ const UserInfo: FC<IUserInfo> = ({ userInfoData, hasEditButton }) => {
   return (
     <Container disableGutters sx={{ position: 'relative', marginBottom: '10px' }}>
       <Box sx={{ width: '100%', height: '200px', position: 'absolute' }}>
-        <CustomBanner img={userInfoData && userInfoData.bannerUrl} alt={userInfoData && userInfoData.bannerUrl} />
+        <CustomBanner img={null}/>
       </Box>
       <Box
         display="flex"
@@ -51,16 +67,18 @@ const UserInfo: FC<IUserInfo> = ({ userInfoData, hasEditButton }) => {
         paddingTop='120px'
       >
         <Box>
-          <CustomAvatar width={150} height={150} img={userInfoData && userInfoData.avatarUrl} alt={userInfoData && userInfoData.avatarUrl} />
-          {userInfoData && <Typography variant="h2">{userInfoData.username}</Typography>}
-          {userInfoData && (<TaggedText color="tag.contrastText" tagSymbol="@" text={userInfoData.username} />)}
-          {userInfoData && (<Typography variant="h4" my={1}> {userInfoData.bio} </Typography>)}
+          <CustomAvatar width={150} height={150} src={avatarUrl} />
+          <Typography variant="h2">{username}</Typography>
+          <TaggedText color="tag.contrastText" tagSymbol="@" text={username} />
+          <Typography variant="h4" my={1}> {bio} </Typography>
           <Box sx={{ display: 'flex', flexDirection: 'row', gap: 1 }}>
-            {userInfoData && <UserLocation userLocation={userInfoData.location} />}
-            {userInfoData && <JoinedDate joinedDate={userInfoData.joinDate} />}
+            <UserLocation userLocation={location} />
+            <JoinedDate joinedDate={joinDate} />
           </Box>
         </Box>
-        {hasEditButton && <Button sx={editButtonStyles} onClick={() => { setOpenEditUserInfo(true) }}> Edit profile </Button>}
+        {hasEditButton && (
+          <Button sx={editButtonStyles} onClick={() => { setOpenEditUserInfo(true) }}> Edit profile </Button>
+        )}
       </Box>
       {userInfoData && openEditUserInfo && (
         <EditUserInfoPopup

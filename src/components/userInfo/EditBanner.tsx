@@ -2,13 +2,13 @@ import { Box, IconButton, useTheme } from '@mui/material'
 import React, { ChangeEventHandler, MutableRefObject, useRef } from 'react'
 import AddPhotoSVG from '@/assets/icons/AddPhoto.svg';
 import { useEditBannerMutation } from '@/query/profile/banner.mutation';
-import { useGetProfileBannerQuery } from '@/query/profile/banner.query';
+// import { useGetProfileBannerQuery } from '@/query/profile/banner.query'; /* image-сервис удален */
 import CustomBanner from '../banner/CustomBanner';
 
 const EditBanner = () => {
   const theme = useTheme()
 
-  const { data: bannerUrl } = useGetProfileBannerQuery()
+  // const { data: bannerUrl } = useGetProfileBannerQuery() /* image-сервис удален */
 
   const { mutateAsync: mutateEditBanner } = useEditBannerMutation()
 
@@ -52,7 +52,7 @@ const EditBanner = () => {
           onChange={bannerRequest as unknown as ChangeEventHandler<HTMLInputElement>} />
       </IconButton>
       <Box sx={{ width: '100%', height: '200px', position: 'absolute' }}>
-        <CustomBanner img={bannerUrl} alt={bannerUrl} />
+        <CustomBanner img={null} />
       </Box>
     </Box>
   )

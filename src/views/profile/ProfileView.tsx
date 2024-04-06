@@ -51,6 +51,7 @@ const ProfileView: FC = () => {
           />
         </Box>
       </Grid>
+
       <Grid
         className='view-profile-content'
         item

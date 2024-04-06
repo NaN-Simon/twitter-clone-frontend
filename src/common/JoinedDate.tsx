@@ -1,18 +1,13 @@
 import React, { FC } from 'react';
-import {
-  Box,
-  IconButton,
-  ListItemIcon,
-  Typography,
-  useTheme,
+import { Box, IconButton, ListItemIcon, Typography, useTheme,
 } from '@mui/material';
 import CalendarSVG from '@/assets/icons/Calendar.svg';
 
 interface IJoinedDate {
-  joinedDate: string;
+  joinedDate?: string;
 }
 
-const JoinedDate: FC<IJoinedDate> = ({ joinedDate }) => {
+const JoinedDate: FC<IJoinedDate> = ({ joinedDate = '' }) => {
   const theme = useTheme();
   return (
     <Box

@@ -5,11 +5,10 @@ import { useAddTweetMutation } from '@/query/tweet/addTweet.mutation';
 import InnerTemplate from './templates/InnerTemplate';
 
 interface IInnerTweet {
-  avatarUrl: string;
-  avatarAlt: string;
+  avatarUrl?: string | null;
 }
 
-const InnerTweet: FC<IInnerTweet> = ({ avatarUrl, avatarAlt }) => {
+const InnerTweet: FC<IInnerTweet> = ({ avatarUrl }) => {
   const { control, register, handleSubmit, reset } = useForm<IAddTweetRequest>();
   const { mutateAsync, isSuccess } = useAddTweetMutation();
 
@@ -23,7 +22,6 @@ const InnerTweet: FC<IInnerTweet> = ({ avatarUrl, avatarAlt }) => {
     <InnerTemplate
     control={control}
       avatarUrl={avatarUrl}
-      avatarAlt={avatarAlt}
       register={register}
       handleSubmit={handleSubmit}
       onSubmit={onSubmit}

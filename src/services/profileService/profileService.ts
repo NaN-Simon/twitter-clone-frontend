@@ -19,9 +19,18 @@ export const editProfileBio = async ( pathId: string, infoData: IChangeInfoReque
 }
 
 export const getProfileAvatar = async () => {
-  const response = await api.get(PROFILE_AVATAR_GET)
-  return response
+  try {
+    const response = await api.get(PROFILE_AVATAR_GET)
+    return response
+  } catch (error) {
+    console.log('getProfileAvatar error', error);
+
+    return null
+  }
 }
+//   const response = await api.get(PROFILE_AVATAR_GET)
+//   return response
+// }
 
 export const getProfileBanner = async () => {
   const response = await api.get(PROFILE_BANNER_GET)

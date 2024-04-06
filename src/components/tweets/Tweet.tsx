@@ -36,7 +36,7 @@ const Tweet: FC<ITweet> = ({
         padding: '10px 15px',
       }}
     >
-      <CustomAvatar img={profile.avatarUrl} alt={profile.avatarUrl} />
+      <CustomAvatar src={profile.avatarUrl} />
       <Box sx={{ width: '100%' }}>
         <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
           <Box sx={{ display: 'flex', flexDirection: 'row', alignItems: 'center', flexWrap: { xs: 'wrap', sm: 'nowrap' }, gap: '8px' }} >

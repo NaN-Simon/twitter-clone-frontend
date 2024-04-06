@@ -3,12 +3,12 @@ import React, { ChangeEventHandler, MutableRefObject, useRef } from 'react'
 import AddPhotoSVG from '@/assets/icons/AddPhoto.svg';
 import CustomAvatar from '../avatar/CustomAvatar';
 import { useEditAvatarMutation } from '@/query/profile/avatar.mutation';
-import { useGetProfileAvatarQuery } from '@/query/profile/avatar.query';
+// import { useGetProfileAvatarQuery } from '@/query/profile/avatar.query'; /* image-сервис удален */
 
 const EditAvatar = () => {
   const theme = useTheme()
 
-  const { data: avatarUrl } = useGetProfileAvatarQuery()
+  // const { data: avatarUrl } = useGetProfileAvatarQuery() /* image-сервис удален */
   const { mutateAsync: mutateEditAvatar } = useEditAvatarMutation()
 
   const inputRef = useRef<HTMLInputElement | null>(null) as MutableRefObject<HTMLInputElement>
@@ -52,7 +52,7 @@ const EditAvatar = () => {
           style={{ display: 'none' }}
           onChange={avatarRequest as unknown as ChangeEventHandler<HTMLInputElement>} />
       </IconButton>
-      <CustomAvatar width={120} height={120} img={avatarUrl} alt={avatarUrl} />
+      <CustomAvatar width={120} height={120} src={null} />
     </Box>
   )
 }

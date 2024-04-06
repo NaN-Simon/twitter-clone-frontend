@@ -2,16 +2,15 @@ import React, { FC } from 'react';
 import Image from 'next/image';
 import { Box, useTheme } from '@mui/material';
 
-import defaultAvatar from '@/assets/images/BlankAvatar.jpg';
+import defaultAvatar from '@/assets/images/blankAvatar.png';
 
 interface IAvatar {
-  img?: string | null;
-  alt?: string | null;
+  src?: string | null;
   width?: number;
   height?: number;
 }
 
-const CustomAvatar: FC<IAvatar> = ({ img, alt, width = 48, height = 48 }) => {
+const CustomAvatar: FC<IAvatar> = ({ src, width = 48, height = 48 }) => {
   const theme = useTheme();
   return (
     <Box
@@ -23,6 +22,7 @@ const CustomAvatar: FC<IAvatar> = ({ img, alt, width = 48, height = 48 }) => {
         width: `${width}px`,
         height: `${height}px`,
         flex: '0 0 auto',
+        background: '#000000'
       }}
     >
       <Image
@@ -30,8 +30,8 @@ const CustomAvatar: FC<IAvatar> = ({ img, alt, width = 48, height = 48 }) => {
         width={width}
         height={height}
         style={{ objectFit: 'contain', transform: 'scale(1.1)' }}
-        src={img ? img : defaultAvatar}
-        alt={alt ? alt : 'defaultAvatar'}
+        src={src ? src : defaultAvatar}
+        alt={src ? src : 'defaultAvatar'}
       />
     </Box>
   );

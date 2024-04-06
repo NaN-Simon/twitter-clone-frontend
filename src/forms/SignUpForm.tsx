@@ -12,15 +12,20 @@ const SignUpForm = () => {
   const [isVerify, setIsVerify] = useState(false);
   const { register, handleSubmit, reset } = useForm<IAuthSignUpRequest>();
 
-  const { mutateAsync: mutateSignUp, data, isLoading, isError, error } = useSignUpMutation();
+  const { mutateAsync, data, isLoading, isError, error, isSuccess } = useSignUpMutation();
 
   useEffect(()=>{
     data && setOpenPopup(true);
     data && reset
   },[data, reset])
 
+  useEffect(() => {
+    console.log('регистрация начата', data);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isSuccess]);
+
   const requestRegister: SubmitHandler<IAuthSignUpRequest> = (value) => {
-    mutateSignUp(value);
+    mutateAsync(value);
   };
 
   const onSubmitForm = (event: React.FormEvent) => {

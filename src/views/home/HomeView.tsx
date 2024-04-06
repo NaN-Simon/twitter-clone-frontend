@@ -3,7 +3,7 @@ import { Alert, Box, Button, CircularProgress, Grid, useTheme } from '@mui/mater
 import { useInView } from 'react-intersection-observer';
 
 import { useGetAuthorizedUserDataQuery } from '@/query/profile/authorizedUserData.query';
-import { useGetProfileAvatarQuery } from '@/query/profile/avatar.query';
+// import { useGetProfileAvatarQuery } from '@/query/profile/avatar.query';  /* image-сервис удален */
 import { useGetTweetHomeQuery } from '@/query/timeline/homeTweets.query';
 
 import InnerTweet from '@/components/inner/InnerTweet';
@@ -19,7 +19,7 @@ const HomePage: FC = () => {
   const theme = useTheme();
   const { ref, inView } = useInView()
   const { data, fetchNextPage, hasNextPage, isFetchingNextPage, isLoading, isError } = useGetTweetHomeQuery();
-  const { data: avatarUrl } = useGetProfileAvatarQuery();
+  // const { data: avatarUrl } = useGetProfileAvatarQuery();  /* image-сервис удален */
   const { data: profileData, isLoading: profileDataIsLoading } = useGetAuthorizedUserDataQuery();
 
   useEffect(() => {
@@ -33,7 +33,7 @@ const HomePage: FC = () => {
       className='view-home'
       container
       gap={{ xs: 'initial', sm: 1, md: 2, lg: 2 }}
-      sx={{ justifyContent: 'center', flexWrap: 'nowrap'}}
+      sx={{ justifyContent: 'center', flexWrap: 'nowrap' }}
     >
       <Grid
         className='view-home-menu'
@@ -61,6 +61,7 @@ const HomePage: FC = () => {
             tag={profileData && profileData.username} />
         </Box>
       </Grid>
+
       <Grid
         className='view-home-content'
         item
@@ -73,7 +74,7 @@ const HomePage: FC = () => {
         <PageHeader title="Home" hasIcon />
         <UnderLine />
 
-        <InnerTweet avatarUrl={avatarUrl} avatarAlt="avatarAlt" />
+        <InnerTweet avatarUrl={null} />
         <UnderLine />
 
         <Box width='100%' textAlign='center'> {isLoading && <CircularProgress sx={{ m: 1 }} />} </Box>
@@ -89,6 +90,7 @@ const HomePage: FC = () => {
           </Button>
         )}
       </Grid>
+
       <Grid
         className='view-home-additional'
         item
