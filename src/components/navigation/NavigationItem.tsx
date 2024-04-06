@@ -2,7 +2,7 @@ import React, { FC } from 'react';
 import { useRouter } from 'next/router';
 import { Button, IconButton, MenuItem, Typography, useTheme } from '@mui/material';
 
-import { INavigationItem } from './types';
+import { INavigationItem } from '../../types/navigation';
 
 const NavigationItem: FC<INavigationItem> = ({ navItem, isActiveItem }) => {
   const theme = useTheme();
@@ -10,7 +10,7 @@ const NavigationItem: FC<INavigationItem> = ({ navItem, isActiveItem }) => {
 
   return (
     <MenuItem
-    className='component-navigationItem'
+      className='component-navigationItem'
       disableGutters
       key={navItem.title}
       onClick={() => push(navItem.url)}

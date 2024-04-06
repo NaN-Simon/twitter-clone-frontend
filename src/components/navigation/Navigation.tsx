@@ -4,7 +4,7 @@ import { AppBar, Toolbar, useTheme } from '@mui/material';
 import { authorizedNavigationList, unauthorizedNavigationList } from '@/components/navigation/configNavigation';
 import NavigationItem from './NavigationItem';
 
-import { INavigation, INavigationElement, IPlan } from './types';
+import { INavigation, INavigationElement, IPlan } from '../../types/navigation';
 
 const Navigation: FC<INavigation> = ({ plan = 'unauthorized', activeItem }) => {
   const theme = useTheme();

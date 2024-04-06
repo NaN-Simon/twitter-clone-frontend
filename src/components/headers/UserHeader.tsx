@@ -1,7 +1,7 @@
 import React, { FC } from 'react';
 import { Box, Container, Typography } from '@mui/material';
 import TaggedText from '@/common/TaggedText';
-import VerifiedIcon from '@/ui/icon/VerifiedIcon';
+import VerifiedIcon from '@/components/UI/icon/VerifiedIcon';
 interface IUserHeader {
   name: string;
   tag: string;

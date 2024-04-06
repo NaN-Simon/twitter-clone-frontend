@@ -8,7 +8,7 @@ import useHover from '@/hooks/useHover';
 
 import ReplySVG from '@/assets/icons/Reply.svg';
 
-import { IDataReplyTo } from '../../types';
+import { IDataReplyTo } from '../../../../types/tweets';
 
 import styles from './WidgetButton.module.css'
 

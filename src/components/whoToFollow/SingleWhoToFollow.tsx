@@ -1,7 +1,7 @@
 import { Box, Button, Container, Typography, useTheme } from '@mui/material';
 import React, { FC } from 'react';
 import Image from 'next/image';
-import { IWhoToFollow } from './types';
+import { IWhoToFollow } from '../../types/whoToFollow';
 
 const SingleWhoToFollow: FC<IWhoToFollow> = ({
   name,

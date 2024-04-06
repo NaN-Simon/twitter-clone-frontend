@@ -2,7 +2,7 @@ import { Box, Container, Typography, useTheme } from '@mui/material';
 import React, { FC } from 'react';
 import Image from 'next/image';
 import PassedTime from '@/common/PassedTime';
-import { ISingleNews } from './types';
+import { ISingleNews } from '../../types/news';
 import TaggedText from '@/common/TaggedText';
 
 const SingleNews: FC<ISingleNews> = ({

@@ -1,7 +1,7 @@
-import { getUserTweets } from "@/services/timelineService/timelineService";
-import { useInfiniteQuery } from "react-query";
+import { getUserTweets } from '@/services/timelineService/timelineService'
+import { useInfiniteQuery } from 'react-query'
 
-import { IDataTweet } from "@/components/tweets/types";
+import { IDataTweet } from '@/types/tweets'
 
 export const useGetUserTweetsQuery = () => {
   return useInfiniteQuery({

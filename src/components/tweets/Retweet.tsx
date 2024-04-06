@@ -7,7 +7,7 @@ import PassedTime from '@/common/PassedTime';
 import RetweetSVG from '@/assets/icons/Retweet.svg';
 import TweetContent from './TweetContent';
 import TweetWidgets from './widgets/TweetWidgets';
-import { ITweet } from '@/components/tweets/types';
+import { ITweet } from '@/types/tweets';
 import MoreActionButton from './widgets/buttons/ButtonMore';
 const Retweet: FC<ITweet> = ({
   id,
@@ -34,7 +34,7 @@ const Retweet: FC<ITweet> = ({
       disableGutters
       sx={{ display: 'flex', flexDirection: 'row', gap: '0 13px', padding: '10px 15px' }}
     >
-      <CustomAvatar src={profile.avatarUrl} />
+      <CustomAvatar src={null} />
       <Box sx={{ width: '100%' }}>
         <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
           <Box sx={{ display: 'flex', flexDirection: 'column', gap: 1 }}>

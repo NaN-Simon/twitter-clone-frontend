@@ -7,16 +7,16 @@ import SingleWhoToFollow from './SingleWhoToFollow';
 
 const temp = [
   {
-    name: 'Bessie Cooper',
-    tag: '@alessandroveronezi',
+    name: 'Elon Musk',
+    tag: '@elonmusk',
     avatarUrl: img,
     altImg: 'alt',
     url: '/',
     followURL: '#',
   },
   {
-    name: 'Jenny Wilson',
-    tag: '@gabrielcantarin',
+    name: 'NASA',
+    tag: '@NASA',
     avatarUrl: img,
     altImg: 'alt',
     url: '/',

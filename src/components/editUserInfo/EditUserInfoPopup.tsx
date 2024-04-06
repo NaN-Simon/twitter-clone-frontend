@@ -8,7 +8,7 @@ import EditAvatar from '@/components/userInfo/EditAvatar';
 import EditBanner from '@/components/userInfo/EditBanner';
 import EditUserInfoForm from './EditUserInfoForm';
 import { IChangeInfoRequest } from '@/services/types';
-import { IUserInfoData } from '../tweets/types';
+import { IUserInfoData } from '../../types/tweets';
 
 interface IEditUserInfoPopup {
   userInfoData: IUserInfoData
@@ -22,7 +22,7 @@ const EditUserInfoPopup: FC<IEditUserInfoPopup> = ({ userInfoData, openEditUserI
   const { mutateAsync: mutateEditProfileBio } = useEditProfileBioMutation()
 
   const requestEditProfile: SubmitHandler<IChangeInfoRequest> = async (value: IChangeInfoRequest) => {
-  const transitionalBioData = await birthDateConverter(value)
+    const transitionalBioData = await birthDateConverter(value)
     mutateEditProfileBio({ bioData: transitionalBioData, pathId: pathId })
   }
 

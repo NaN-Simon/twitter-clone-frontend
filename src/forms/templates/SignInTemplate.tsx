@@ -14,7 +14,7 @@ import {
 } from '@mui/material';
 import { IAuthLoginRequest } from '@/services/types';
 import { AxiosError } from 'axios';
-import { IErrorData } from '../types';
+import { IErrorData } from '../../types/forms';
 
 interface ISignInTemplate {
   loginRegisterForm: UseFormRegister<IAuthLoginRequest>;

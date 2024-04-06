@@ -4,7 +4,7 @@ import CustomAvatar from '@/components/avatar/CustomAvatar';
 import UserHeader from '@/components/headers/UserHeader';
 import PassedTime from '@/common/PassedTime';
 import TweetContent from './TweetContent';
-import { IDataReply } from './types';
+import { IDataReply } from '../../types/tweets';
 import TweetWidgets from './widgets/TweetWidgets';
 import TaggedText from '@/common/TaggedText';
 import MoreActionButton from './widgets/buttons/ButtonMore';
@@ -26,9 +26,9 @@ const Reply: FC<IDataReply> = ({
   replyId,
   replyIsLiked,
   replyIsRetweeted,
-  replyIsBelongs,
+  // replyIsBelongs,
   replyProfile,
-  replycreationDate,
+  replyCreationDate,
   replyTweetText,
   replyMediaUrls,
   replyLikes,
@@ -53,7 +53,7 @@ const Reply: FC<IDataReply> = ({
     >
       <Box sx={{ display: 'flex', flexDirection: 'row', gap: 2 }}>
         <Box position="relative">
-          <CustomAvatar src={replyProfile.avatarUrl} />
+          <CustomAvatar src={null} />
           <Paper
             sx={{
               background: theme.palette.secondary.main,
@@ -85,7 +85,7 @@ const Reply: FC<IDataReply> = ({
               }}
             >
               <UserHeader name={replyProfile.username} tag={replyProfile.username} />
-              <PassedTime date={replycreationDate} />
+              <PassedTime date={replyCreationDate} />
             </Box>
             {isBelongs && <MoreActionButton id={id} type={'reply'} />}
           </Box>
@@ -109,7 +109,7 @@ const Reply: FC<IDataReply> = ({
       </Box>
       <Box>
         <Box display="flex" flexDirection="row" gap={2}>
-          <CustomAvatar src={profile.avatarUrl} />
+          <CustomAvatar src={null} />
           <Box
             sx={{
               display: 'flex',

@@ -2,8 +2,8 @@ import React, { FC, useState } from 'react'
 import { Container, IconButton, TextField } from '@mui/material'
 import ExploreSVG from '@/assets/icons/Explore.svg'
 import { UseFormHandleSubmit, UseFormRegister } from 'react-hook-form'
-import { ISearchInner } from './types'
-import Close from '@/ui/button/Close'
+import { ISearchInner } from '../../types/search'
+import Close from '@/components/UI/button/Close'
 interface IInnerSearch {
   register: UseFormRegister<ISearchInner>
   handleSubmit: UseFormHandleSubmit<ISearchInner>

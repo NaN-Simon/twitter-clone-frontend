@@ -1,7 +1,7 @@
 import React, { FC } from 'react';
 import { Box, Container } from '@mui/material';
 import UnderLine from '@/common/UnderLine';
-import { IDataTweet, IDataTweets } from './types';
+import { IDataTweet, IDataTweets } from '../../types/tweets';
 import Tweet from './Tweet';
 import Retweet from './Retweet';
 import Reply from './Reply';
@@ -17,19 +17,12 @@ const Tweets: FC<IDataTweets> = ({ tweets }, index) => {
               id={tweet.retweetTo.id}
               isLiked={tweet.retweetTo.isLiked}
               isRetweeted={tweet.retweetTo.isRetweeted}
-              avatarUrl={tweet.retweetTo.profile.avatarUrl}
-              avatarAlt={tweet.retweetTo.profile.avatarUrl}
-              username={tweet.retweetTo.profile.username}
-              userTag={tweet.retweetTo.profile.username}
-              userPassedTime={Number(new Date(tweet.retweetTo.creationDate))}
-              tweetText={tweet.retweetTo.text}
-              tweetImg={
-                tweet.retweetTo.mediaUrls && tweet.retweetTo.mediaUrls[0]
-              }
-              tweetAlt={
-                tweet.retweetTo.mediaUrls && tweet.retweetTo.mediaUrls[0]
-              }
+              isBelongs={tweet.retweetTo.isBelongs}
               likes={tweet.retweetTo.likes}
+              profile={tweet.retweetTo.profile}
+              creationDate={tweet.retweetTo.creationDate}
+              text={tweet.retweetTo.text}
+              mediaUrls={tweet.retweetTo.mediaUrls}
               replies={tweet.retweetTo.replies}
               replyTo={tweet.retweetTo.replyTo}
               retweets={tweet.retweetTo.retweets}
@@ -42,35 +35,25 @@ const Tweets: FC<IDataTweets> = ({ tweets }, index) => {
               id={tweet.id}
               isLiked={tweet.isLiked}
               isRetweeted={tweet.isRetweeted}
-              username={tweet.profile.username}
-              userTag={tweet.profile.username}
-              userPassedTime={Number(new Date(tweet.creationDate))}
-              avatarUrl={tweet.profile.avatarUrl}
-              avatarAlt={tweet.profile.avatarUrl}
-              tweetText={tweet.text}
-              tweetImg={tweet.mediaUrls && tweet.mediaUrls[0]}
-              tweetAlt={tweet.mediaUrls && tweet.mediaUrls[0]}
+              isBelongs={tweet.isBelongs}
+              mediaUrls={tweet.mediaUrls}
               likes={tweet.likes}
               replies={tweet.replies}
               replyTo={tweet.replyTo}
               retweets={tweet.retweets}
               retweetTo={tweet.retweetTo}
               views={tweet.views}
+              profile={tweet.profile}
+              creationDate={tweet.creationDate}
+              text={tweet.text}
               replyId={tweet.replyTo.id}
               replyIsLiked={tweet.replyTo.isLiked}
               replyIsRetweeted={tweet.replyTo.isRetweeted}
-              replyUsername={tweet.replyTo.profile.username}
-              replyUserTag={tweet.replyTo.profile.username}
-              replyUserPassedTime={Number(new Date(tweet.replyTo.creationDate))}
-              replyAvatarUrl={tweet.replyTo.profile.avatarUrl}
-              replyAvatarAlt={tweet.replyTo.profile.avatarUrl}
+              replyIsBelongs={tweet.replyTo.isBelongs}
+              replyProfile={tweet.replyTo.profile}
+              replyCreationDate={tweet.replyTo.creationDate}
               replyTweetText={tweet.replyTo.text}
-              replyTweetImg={
-                tweet.replyTo.mediaUrls && tweet.replyTo.mediaUrls[0]
-              }
-              replyTweetAlt={
-                tweet.replyTo.mediaUrls && tweet.replyTo.mediaUrls[0]
-              }
+              replyMediaUrls={tweet.replyTo.mediaUrls}
               replyLikes={tweet.replyTo.likes}
               replyReplies={tweet.replyTo.replies}
               replyReplyTo={tweet.replyTo.replyTo}
@@ -84,19 +67,16 @@ const Tweets: FC<IDataTweets> = ({ tweets }, index) => {
               id={tweet.id}
               isLiked={tweet.isLiked}
               isRetweeted={tweet.isRetweeted}
-              avatarUrl={tweet.profile.avatarUrl}
-              avatarAlt={tweet.profile.avatarUrl}
-              username={tweet.profile.username}
-              userTag={tweet.profile.username}
-              userPassedTime={Number(new Date(tweet.creationDate))}
-              tweetText={tweet.text}
-              tweetImg={tweet.mediaUrls && tweet.mediaUrls[0]}
-              tweetAlt={tweet.mediaUrls && tweet.mediaUrls[0]}
+              isBelongs={tweet.isBelongs}
               likes={tweet.likes}
+              profile={tweet.profile}
+              mediaUrls={tweet.mediaUrls}
+              creationDate={tweet.creationDate}
               replies={tweet.replies}
               replyTo={tweet.replyTo}
-              retweets={tweet.retweets}
               retweetTo={tweet.retweetTo}
+              retweets={tweet.retweets}
+              text={tweet.text}
               views={tweet.views}
             />
           )}

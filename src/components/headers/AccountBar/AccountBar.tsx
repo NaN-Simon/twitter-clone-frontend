@@ -9,7 +9,7 @@ import CustomAvatar from '@/components/avatar/CustomAvatar';
 
 import TaggedText from '@/common/TaggedText';
 
-import VerifiedIcon from '@/ui/icon/VerifiedIcon';
+import VerifiedIcon from '@/components/UI/icon/VerifiedIcon';
 
 interface IAccountBar {
   name?: string;

@@ -9,8 +9,8 @@ export interface IUserInfoData {
   location: string
   website: string
   birthDate: string | null
-  avatarUrl: string | null
-  bannerUrl: string | null
+  // avatarUrl: string | null
+  // bannerUrl: string | null
 }
 
 export type ITweet = {
@@ -113,5 +113,5 @@ export type IDataReply = {
   replyViews: number
   replyTweetText?: string
   replyMediaUrls?: string[]
-  replycreationDate: string
+  replyCreationDate: string
 } & ITweet

@@ -3,7 +3,7 @@ import { Box, Container } from '@mui/material';
 import UnderLine from '@/common/UnderLine';
 import Tweet from './Tweet';
 import Retweet from './Retweet';
-import { IDataTweet, IDataTweets } from './types';
+import { IDataTweet, IDataTweets } from '../../types/tweets';
 
 const TweetAndRetweetList: FC<IDataTweets> = ({ tweets }, index) => {
 

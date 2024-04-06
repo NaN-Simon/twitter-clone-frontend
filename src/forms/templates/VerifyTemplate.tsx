@@ -4,7 +4,7 @@ import { Alert, CircularProgress, Container, TextField } from '@mui/material';
 import PopupVerify from '@/components/popups/PopupVerify';
 import { IAuthVerifyRequest } from '@/services/types';
 import { AxiosError } from 'axios';
-import { IErrorData } from '../types';
+import { IErrorData } from '../../types/forms';
 
 interface IVerifyTemplate {
   openPopup: boolean;

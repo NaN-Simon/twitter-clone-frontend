@@ -8,7 +8,7 @@ import RetweetSVG from '@/assets/icons/Retweet.svg';
 
 import useHover from '@/hooks/useHover';
 
-import { IDataRetweetTo } from '../../types';
+import { IDataRetweetTo } from '../../../../types/tweets';
 
 import styles from './WidgetButton.module.css'
 

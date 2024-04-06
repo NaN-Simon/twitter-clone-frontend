@@ -1,5 +1,5 @@
 import { render, screen } from '@testing-library/react'
-import Close from '@/../src/ui/button/Close'
+import Close from '@/components/UI/button/Close'
 
 describe('close button', () => {
   test('close button should be in the document', () => {

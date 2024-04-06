@@ -7,9 +7,9 @@ import { useGetAuthorizedUserDataQuery } from '@/query/profile/authorizedUserDat
 import InnerSearch from '@/components/search/InnerSearch'
 import SearchList from '@/components/search/SearchList'
 import SettingsSVG from '@/assets/icons/Settings.svg'
-import { ISearchInner } from './types'
+import { ISearchInner } from '../../types/search'
 import { ISearchQueryData } from '@/services/types'
-import { IUserInfoData } from '../tweets/types'
+import { IUserInfoData } from '../../types/tweets'
 
 const Search = () => {
   const [userslist, setUserslist] = useState([])

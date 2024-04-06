@@ -1,7 +1,7 @@
 import { Container } from '@mui/material'
 import React, { FC } from 'react'
 import SearchItem from './SearchItem'
-import { IUserInfoData } from '../tweets/types'
+import { IUserInfoData } from '../../types/tweets'
 
 interface ISearchListArray {
   searchedList: IUserInfoData[]

@@ -21,6 +21,7 @@ const CustomBanner: FC<ICustomBanner> = ({ img }) => {
       }
       <Image
         fill
+        priority
         sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
         style={{ objectFit: 'cover', opacity: '0.2' }}
         src={profileBackground}
@@ -38,6 +39,8 @@ const CustomBanner: FC<ICustomBanner> = ({ img }) => {
       }}>
         Twitter Clone
       </Typography>
+
+
       {img && <IconButton sx={{ width: '100%', height: '200px', p: 0 }}>
         <Image
           fill

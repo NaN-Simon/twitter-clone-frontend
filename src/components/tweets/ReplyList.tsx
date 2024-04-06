@@ -2,7 +2,7 @@ import React, { FC } from 'react';
 import { Box, Container } from '@mui/material';
 import UnderLine from '@/common/UnderLine';
 import Reply from './Reply';
-import { IDataReplies, IDataTweet } from './types';
+import { IDataReplies, IDataTweet } from '../../types/tweets';
 
 const ReplyList: FC<IDataReplies> = ({ replies }, index) => {
   console.log(replies);
@@ -22,7 +22,7 @@ const ReplyList: FC<IDataReplies> = ({ replies }, index) => {
               replyIsRetweeted={reply.replyTo.isRetweeted}
               replyIsBelongs={reply.replyTo.isBelongs}
               replyProfile={reply.replyTo.profile}
-              replycreationDate={reply.replyTo.creationDate}
+              replyCreationDate={reply.replyTo.creationDate}
               replyTweetText={reply.replyTo.text}
               replyLikes={reply.replyTo.likes}
               replyReplies={reply.replyTo.replies}

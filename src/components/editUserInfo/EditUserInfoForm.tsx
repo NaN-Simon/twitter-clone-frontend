@@ -4,7 +4,7 @@ import { Box, Container, TextField, Typography } from '@mui/material'
 import ReactDatePicker from 'react-datepicker'
 import 'react-datepicker/dist/react-datepicker.css';
 import { IChangeInfoRequest } from '@/services/types'
-import { IUserInfoData } from '../tweets/types'
+import { IUserInfoData } from '../../types/tweets'
 
 interface IEditUserInfoForm {
   registerEditForm: UseFormRegister<IChangeInfoRequest>

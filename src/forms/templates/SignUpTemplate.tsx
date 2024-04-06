@@ -14,7 +14,7 @@ import {
 
 import VerifyForm from '../VerifyForm';
 import { IAuthSignUpRequest } from '@/services/types';
-import { IErrorData } from '../types';
+import { IErrorData } from '../../types/forms';
 import { AxiosError } from 'axios';
 
 interface ISignUpTemplate {

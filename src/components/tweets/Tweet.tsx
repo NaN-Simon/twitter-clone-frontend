@@ -6,7 +6,7 @@ import PassedTime from '@/common/PassedTime';
 import TweetContent from './TweetContent';
 import MoreActionButton from '@/components/tweets/widgets/buttons/ButtonMore';
 import TweetWidgets from './widgets/TweetWidgets';
-import { ITweet } from '@/components/tweets/types';
+import { ITweet } from '@/types/tweets';
 
 const Tweet: FC<ITweet> = ({
   id,
@@ -36,7 +36,7 @@ const Tweet: FC<ITweet> = ({
         padding: '10px 15px',
       }}
     >
-      <CustomAvatar src={profile.avatarUrl} />
+      <CustomAvatar src={null} />
       <Box sx={{ width: '100%' }}>
         <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
           <Box sx={{ display: 'flex', flexDirection: 'row', alignItems: 'center', flexWrap: { xs: 'wrap', sm: 'nowrap' }, gap: '8px' }} >

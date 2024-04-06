@@ -6,7 +6,7 @@ import UserLocation from '@/common/UserLocation';
 import CustomBanner from '@/components/banner/CustomBanner';
 import EditUserInfoPopup from '@/components/editUserInfo/EditUserInfoPopup';
 import CustomAvatar from '@/components/avatar/CustomAvatar';
-import { IUserInfoData } from '../tweets/types';
+import { IUserInfoData } from '../../types/tweets';
 
 
 interface IUserInfo {
@@ -25,12 +25,12 @@ const initialUserInfoData = {
   location: '',
   website: '',
   birthDate: '',
-  avatarUrl: '',
-  bannerUrl: '',
+  // avatarUrl: '',
+  // bannerUrl: '',
 }
 
 const UserInfo: FC<IUserInfo> = ({ userInfoData = initialUserInfoData, hasEditButton }) => {
-  const { username, bio, location, joinDate, avatarUrl/* , bannerUrl */ } = userInfoData /* image-сервис удален */
+  const { username, bio, location, joinDate /*, avatarUrl , bannerUrl */ } = userInfoData /* image-сервис удален */
   const [openEditUserInfo, setOpenEditUserInfo] = useState(false)
 
   const editButtonStyles = {
@@ -54,7 +54,7 @@ const UserInfo: FC<IUserInfo> = ({ userInfoData = initialUserInfoData, hasEditBu
   return (
     <Container disableGutters sx={{ position: 'relative', marginBottom: '10px' }}>
       <Box sx={{ width: '100%', height: '200px', position: 'absolute' }}>
-        <CustomBanner img={null}/>
+        <CustomBanner img={null} />
       </Box>
       <Box
         display="flex"
@@ -67,7 +67,7 @@ const UserInfo: FC<IUserInfo> = ({ userInfoData = initialUserInfoData, hasEditBu
         paddingTop='120px'
       >
         <Box>
-          <CustomAvatar width={150} height={150} src={avatarUrl} />
+          <CustomAvatar width={150} height={150} src={null} />
           <Typography variant="h2">{username}</Typography>
           <TaggedText color="tag.contrastText" tagSymbol="@" text={username} />
           <Typography variant="h4" my={1}> {bio} </Typography>

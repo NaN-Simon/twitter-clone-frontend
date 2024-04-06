@@ -5,7 +5,7 @@ import ButtonViews from './buttons/ButtonViews';
 import ButtonRetweet from '@/components/tweets/widgets/buttons/ButtonRetweet';
 import ButtonReply from '@/components/tweets/widgets/buttons/ButtonReply';
 import ButtonShare from './buttons/ButtonShare';
-import { ITweetWidgets } from '@/components/tweets/types';
+import { ITweetWidgets } from '@/types/tweets';
 
 const TweetWidgets: FC<ITweetWidgets> = ({
   id,
