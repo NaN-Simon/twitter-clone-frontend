@@ -6,11 +6,6 @@ export interface INavigationElement {
   url: string;
 }
 
-export interface INavigationItem {
-  navItem: INavigationElement;
-  isActiveItem: boolean;
-}
-
 export interface IPlan {
   authorized: INavigationElement[],
   unauthorized: INavigationElement[],
