@@ -1,10 +1,10 @@
 import React, { FC } from 'react';
-import { Container, ImageListItem, Typography } from '@mui/material';
-import Image from 'next/image';
+import { Container, /* ImageListItem, */ Typography } from '@mui/material';
+// import Image from 'next/image';
 import { ITweetContent } from '@/types/tweets';
 
-const TweetContent: FC<ITweetContent> = ({ text, mediaUrls }) => {
-  const isShowImage = mediaUrls?.length !== 0 && mediaUrls !== undefined;
+const TweetContent: FC<ITweetContent> = ({ text, /* mediaUrls */ }) => {
+  // const isShowImage = mediaUrls?.length !== 0 && mediaUrls !== undefined;
 
   return (
     <Container
@@ -19,7 +19,7 @@ const TweetContent: FC<ITweetContent> = ({ text, mediaUrls }) => {
       }}
     >
       <Typography sx={{ wordWrap: 'break-word' }}>{text}</Typography>
-      {isShowImage && mediaUrls.map((item) => (
+      {/* {isShowImage && mediaUrls.map((item) => (
         <ImageListItem key={item} sx={{
           position: 'relative',
           borderRadius: '20px',
@@ -37,8 +37,7 @@ const TweetContent: FC<ITweetContent> = ({ text, mediaUrls }) => {
           />
         </ImageListItem>
       ))
-
-      }
+      } */}
     </Container>
   );
 };

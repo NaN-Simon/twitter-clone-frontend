@@ -22,7 +22,7 @@ export type ITweet = {
 
 export type ITweetContent = {
   text?: string
-  mediaUrls?: string[]
+  // mediaUrls?: string[]
 }
 
 export type ITweetWidgets = {
@@ -52,7 +52,7 @@ export type IDataTweet = {
   isBelongs: boolean
   likes: number
   profile: IUserInfoData
-  mediaUrls?: string[]
+  // mediaUrls?: string[]
   creationDate: string
   quoteTo: null
   replies: number
@@ -70,7 +70,7 @@ export type IDataRetweetTo = {
   isRetweeted: boolean
   isBelongs: boolean
   likes: number
-  mediaUrls: string[]
+  // mediaUrls: string[]
   profile: IUserInfoData
   quoteTo: null
   replies: number
@@ -88,7 +88,7 @@ export type IDataReplyTo = {
   isRetweeted: boolean
   isBelongs: boolean
   likes: number
-  mediaUrls: string[]
+  // mediaUrls: string[]
   profile: IUserInfoData
   quoteTo: null
   replies: number
@@ -112,6 +112,6 @@ export type IDataReply = {
   replyRetweetTo: null | IDataRetweetTo
   replyViews: number
   replyTweetText?: string
-  replyMediaUrls?: string[]
+  // replyMediaUrls?: string[]
   replyCreationDate: string
 } & ITweet

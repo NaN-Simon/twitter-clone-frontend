@@ -22,7 +22,7 @@ const Tweets: FC<IDataTweets> = ({ tweets }, index) => {
               profile={tweet.retweetTo.profile}
               creationDate={tweet.retweetTo.creationDate}
               text={tweet.retweetTo.text}
-              mediaUrls={tweet.retweetTo.mediaUrls}
+              // mediaUrls={tweet.retweetTo.mediaUrls}
               replies={tweet.retweetTo.replies}
               replyTo={tweet.retweetTo.replyTo}
               retweets={tweet.retweetTo.retweets}
@@ -36,7 +36,7 @@ const Tweets: FC<IDataTweets> = ({ tweets }, index) => {
               isLiked={tweet.isLiked}
               isRetweeted={tweet.isRetweeted}
               isBelongs={tweet.isBelongs}
-              mediaUrls={tweet.mediaUrls}
+              // mediaUrls={tweet.mediaUrls}
               likes={tweet.likes}
               replies={tweet.replies}
               replyTo={tweet.replyTo}
@@ -53,7 +53,7 @@ const Tweets: FC<IDataTweets> = ({ tweets }, index) => {
               replyProfile={tweet.replyTo.profile}
               replyCreationDate={tweet.replyTo.creationDate}
               replyTweetText={tweet.replyTo.text}
-              replyMediaUrls={tweet.replyTo.mediaUrls}
+              // replyMediaUrls={tweet.replyTo.mediaUrls}
               replyLikes={tweet.replyTo.likes}
               replyReplies={tweet.replyTo.replies}
               replyReplyTo={tweet.replyTo.replyTo}
@@ -70,7 +70,7 @@ const Tweets: FC<IDataTweets> = ({ tweets }, index) => {
               isBelongs={tweet.isBelongs}
               likes={tweet.likes}
               profile={tweet.profile}
-              mediaUrls={tweet.mediaUrls}
+              // mediaUrls={tweet.mediaUrls}
               creationDate={tweet.creationDate}
               replies={tweet.replies}
               replyTo={tweet.replyTo}

@@ -17,7 +17,7 @@ const Retweet: FC<ITweet> = ({
   profile,
   creationDate,
   text,
-  mediaUrls,
+  // mediaUrls,
   likes,
   replies,
   replyTo,
@@ -63,7 +63,7 @@ const Retweet: FC<ITweet> = ({
         >
           <TweetContent
             text={text}
-            mediaUrls={mediaUrls}
+            // mediaUrls={mediaUrls}
           />
           <TweetWidgets
             id={id}

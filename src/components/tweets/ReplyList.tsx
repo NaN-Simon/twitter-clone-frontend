@@ -16,7 +16,7 @@ const ReplyList: FC<IDataReplies> = ({ replies }, index) => {
           {reply.replyTo && (
             <Reply
               {...reply}
-              replyMediaUrls={reply.replyTo.mediaUrls}
+              // replyMediaUrls={reply.replyTo.mediaUrls}
               replyId={reply.replyTo.id}
               replyIsLiked={reply.replyTo.isLiked}
               replyIsRetweeted={reply.replyTo.isRetweeted}

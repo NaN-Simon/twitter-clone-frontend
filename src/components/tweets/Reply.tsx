@@ -13,7 +13,7 @@ const Reply: FC<IDataReply> = ({
   isLiked,
   isRetweeted,
   isBelongs,
-  mediaUrls,
+  // mediaUrls,
   likes,
   replies,
   replyTo,
@@ -30,7 +30,7 @@ const Reply: FC<IDataReply> = ({
   replyProfile,
   replyCreationDate,
   replyTweetText,
-  replyMediaUrls,
+  // replyMediaUrls,
   replyLikes,
   replyReplies,
   replyReplyTo,
@@ -92,7 +92,7 @@ const Reply: FC<IDataReply> = ({
 
           <TweetContent
             text={replyTweetText}
-            mediaUrls={replyMediaUrls}
+            // mediaUrls={replyMediaUrls}
           />
           <TweetWidgets
             id={replyId}
@@ -138,7 +138,7 @@ const Reply: FC<IDataReply> = ({
 
               <TweetContent
                 text={text}
-                mediaUrls={mediaUrls}
+                // mediaUrls={mediaUrls}
               />
             </Box>
             <TweetWidgets
