@@ -8,7 +8,7 @@ import UnderLine from '@/common/UnderLine';
 import Navigation from '@/components/navigation/Navigation';
 import News from '@/components/news/News';
 import WhoToFollow from '@/components/whoToFollow/WhoToFollow';
-import AccountBar from '@/components/headers/AccountBar/AccountBar';
+import AccountMenu from '@/components/navigation/AccountMenu';
 import Search from '@/components/search/Search';
 
 const ProfileView: FC = () => {
@@ -41,7 +41,7 @@ const ProfileView: FC = () => {
             py: 1,
           }}>
           <Navigation plan='authorized' activeItem="Explore" />
-          <AccountBar isLoading={profileDataIsLoading} hasAvatar isVertical name={profileData && profileData.username} tag={profileData && profileData.username} />
+          <AccountMenu isLoading={profileDataIsLoading} hasAvatar isVertical name={profileData && profileData.username} tag={profileData && profileData.username} />
         </Box>
       </Grid>
 

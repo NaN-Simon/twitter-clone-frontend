@@ -10,7 +10,7 @@ import UnderLine from '@/common/UnderLine';
 import WhoToFollow from '@/components/whoToFollow/WhoToFollow';
 import TweetTabPanel from './components/TweetTabPanel';
 import UserInfo from '../../components/userInfo/UserInfo';
-import AccountBar from '@/components/headers/AccountBar/AccountBar';
+import AccountMenu from '@/components/navigation/AccountMenu';
 
 const ProfileView: FC = () => {
   const theme = useTheme();
@@ -21,7 +21,7 @@ const ProfileView: FC = () => {
       className='view-profile'
       container
       gap={{ xs: 'initial', sm: 1, md: 2, lg: 2 }}
-      sx={{ justifyContent: 'center', flexWrap: 'nowrap'}}
+      sx={{ justifyContent: 'center', flexWrap: 'nowrap' }}
     >
       <Grid
         className='view-profile-menu'
@@ -42,7 +42,7 @@ const ProfileView: FC = () => {
             py: 1,
           }}>
           <Navigation plan='authorized' activeItem="Profile" />
-          <AccountBar
+          <AccountMenu
             isLoading={userInfoDataIsLoading}
             hasAvatar
             isVertical

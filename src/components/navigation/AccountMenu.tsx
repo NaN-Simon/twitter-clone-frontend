@@ -1,6 +1,6 @@
 import React, { FC } from 'react';
-import { Box, Button, CircularProgress, Container, Menu, MenuItem, Typography } from '@mui/material';
 import { useRouter } from 'next/router';
+import { Box, Button, CircularProgress, Menu, MenuItem, Typography } from '@mui/material';
 
 // import { useGetProfileAvatarQuery } from '@/query/profile/avatar.query'; /* image-сервис удален */
 import { useLogoutQuery } from '@/query/authorization/authorization.query';
@@ -11,7 +11,7 @@ import TaggedText from '@/common/TaggedText';
 
 import VerifiedIcon from '@/components/UI/icon/VerifiedIcon';
 
-interface IAccountBar {
+interface IAccountMenu {
   name?: string;
   tag?: string;
   hasAvatar?: boolean;
@@ -20,14 +20,8 @@ interface IAccountBar {
   isLoading?: boolean
 }
 
-const AccountBar: FC<IAccountBar> = ({
-  name,
-  tag,
-  hasAvatar,
-  isVerified,
-  isVertical,
-  isLoading,
-}) => {
+const AccountMenu: FC<IAccountMenu> = (props) => {
+  const { name, tag, hasAvatar, isVerified, isVertical, isLoading } = props
   // const { data: avatarUrl } = useGetProfileAvatarQuery(); /* image-сервис удален */
   const { refetch: logout } = useLogoutQuery();
   const { push } = useRouter();
@@ -44,14 +38,13 @@ const AccountBar: FC<IAccountBar> = ({
   if (!name || !tag) return (<></>)
 
   return (
-    <Container disableGutters >
+    <Button aria-label="Account menu" onClick={handleClick} >
       {/* имя и тэг пользователя, всплывающее меню */}
-      <Button
+      <Box
         id="basic-button"
         aria-controls={open ? 'basic-menu' : undefined}
         aria-haspopup="true"
         aria-expanded={open ? 'true' : undefined}
-        onClick={handleClick}
         sx={{
           display: 'flex',
           flexDirection: 'row',
@@ -77,7 +70,7 @@ const AccountBar: FC<IAccountBar> = ({
           </Box>
           <TaggedText color="tag.contrastText" tagSymbol="@" text={tag} />
         </Box>
-      </Button>
+      </Box>
 
       <Menu
         disableScrollLock
@@ -96,7 +89,7 @@ const AccountBar: FC<IAccountBar> = ({
       >
         <MenuItem sx={{ display: 'flex', justifyContent: 'space-between', gap: '10px' }} >
           <span>JWT: </span>
-          <input type="text" value={localStorage.getItem('auth-token') || 'notJWT'} />
+          <input type="text" defaultValue={localStorage.getItem('auth-token') || 'notJWT'} />
         </MenuItem>
         <MenuItem onClick={() => {
           handleClose();
@@ -107,8 +100,8 @@ const AccountBar: FC<IAccountBar> = ({
           logout(); push('/logout')
         }}>Logout</MenuItem>
       </Menu>
-    </Container>
+    </Button>
   );
 };
 
-export default AccountBar;
+export default AccountMenu;

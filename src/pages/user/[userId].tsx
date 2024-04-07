@@ -8,7 +8,7 @@ import { useGetSearchUsersListQuery } from '@/query/profile/search.query';
 import { useGetUserTweetsByIdQuery } from '@/query/timeline/tweetTimeline.query';
 
 import UnderLine from '@/common/UnderLine';
-import AccountBar from '@/components/headers/AccountBar/AccountBar';
+import AccountMenu from '@/components/navigation/AccountMenu';
 import PageHeader from '@/components/headers/PageHeader';
 import News from '@/components/news/News';
 import UserInfo from '@/components/userInfo/UserInfo';
@@ -56,7 +56,7 @@ const User = () => {
           }}>
           <Navigation plan='authorized' />
           {authorizedUserIsLoading && <CircularProgress sx={{ m: 1 }} />}
-          {authorizedUserData && <AccountBar hasAvatar isVertical name={authorizedUserData.username} tag={authorizedUserData.username} />}
+          {authorizedUserData && <AccountMenu hasAvatar isVertical name={authorizedUserData.username} tag={authorizedUserData.username} />}
         </Box>
       </Grid>
 

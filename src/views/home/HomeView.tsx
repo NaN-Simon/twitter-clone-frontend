@@ -12,7 +12,7 @@ import Navigation from '@/components/navigation/Navigation';
 import News from '@/components/news/News';
 import UnderLine from '@/common/UnderLine';
 import WhoToFollow from '@/components/whoToFollow/WhoToFollow';
-import AccountBar from '@/components/headers/AccountBar/AccountBar';
+import AccountMenu from '@/components/navigation/AccountMenu';
 import TweetAndRetweetList from '@/components/tweets/TweetAndRetweetList';
 
 const HomePage: FC = () => {
@@ -53,7 +53,7 @@ const HomePage: FC = () => {
           py: 1,
         }}>
           <Navigation plan='authorized' activeItem="Home" />
-          <AccountBar
+          <AccountMenu
             isLoading={profileDataIsLoading}
             hasAvatar
             isVertical
