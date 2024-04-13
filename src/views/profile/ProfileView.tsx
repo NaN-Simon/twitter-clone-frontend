@@ -1,16 +1,15 @@
 import React, { FC } from 'react';
-import { Box, Grid, useTheme } from '@mui/material';
+import { CircularProgress, Grid, useTheme } from '@mui/material';
 
 import { useGetAuthorizedUserDataQuery } from '@/query/profile/authorizedUserData.query';
 
 import PageHeader from '@/components/headers/PageHeader';
-import Navigation from '@/components/navigation/Navigation';
 import News from '@/components/news/News';
 import UnderLine from '@/common/UnderLine';
 import WhoToFollow from '@/components/whoToFollow/WhoToFollow';
 import TweetTabPanel from './components/TweetTabPanel';
 import UserInfo from '../../components/userInfo/UserInfo';
-import AccountMenu from '@/components/navigation/AccountMenu';
+import PageGridLeftSide from '@/modules/PageGridLeftSide';
 
 const ProfileView: FC = () => {
   const theme = useTheme();
@@ -23,34 +22,7 @@ const ProfileView: FC = () => {
       gap={{ xs: 'initial', sm: 1, md: 2, lg: 2 }}
       sx={{ justifyContent: 'center', flexWrap: 'nowrap' }}
     >
-      <Grid
-        className='view-profile-menu'
-        item
-        sx={{
-          minWidth: { xs: '35px', sm: '35px', md: '200px', lg: '200px' },
-          position: 'relative'
-        }}
-      >
-        <Box
-          sx={{
-            display: 'flex',
-            flexDirection: 'column',
-            justifyContent: 'space-between',
-            position: 'fixed',
-            height: '100vh',
-            width: 'inherit',
-            py: 1,
-          }}>
-          <Navigation plan='authorized' activeItem="Profile" />
-          <AccountMenu
-            isLoading={userInfoDataIsLoading}
-            hasAvatar
-            isVertical
-            name={userInfoData && userInfoData.username}
-            tag={userInfoData && userInfoData.username}
-          />
-        </Box>
-      </Grid>
+      <PageGridLeftSide pageName='Profile' />
 
       <Grid
         className='view-profile-content'
@@ -63,6 +35,7 @@ const ProfileView: FC = () => {
       >
         <PageHeader title="Profile" />
         <UnderLine />
+        {userInfoDataIsLoading && <CircularProgress sx={{ m: 1 }} />}
         <UserInfo hasEditButton userInfoData={userInfoData} />
         <UnderLine />
         <TweetTabPanel />

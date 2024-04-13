@@ -111,7 +111,7 @@ const InnerTemplate: FC<IInnerTemplate> = ({
               },
             }}
           >
-            Tweet
+            Post
           </Button>
         </Box>
       </Box>

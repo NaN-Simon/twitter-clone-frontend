@@ -5,7 +5,7 @@ import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 import { Container, SxProps, Theme, useTheme } from '@mui/material';
 
-interface IPopupReply {
+interface IPopup {
   title: string;
   contentText?: string;
   children: ReactNode;
@@ -13,7 +13,7 @@ interface IPopupReply {
   setOpenPopup: React.Dispatch<React.SetStateAction<boolean>>;
   sx?: SxProps<Theme>;
 }
-const PopupReply: FC<IPopupReply> = (props) => {
+const Popup: FC<IPopup> = (props) => {
   const theme = useTheme();
   const {
     title,
@@ -50,4 +50,4 @@ const PopupReply: FC<IPopupReply> = (props) => {
   );
 };
 
-export default PopupReply;
+export default Popup;

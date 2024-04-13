@@ -1,26 +1,22 @@
 import React, { FC, useEffect } from 'react';
 import { Alert, Box, Button, CircularProgress, Grid, useTheme } from '@mui/material';
 import { useInView } from 'react-intersection-observer';
-
-import { useGetAuthorizedUserDataQuery } from '@/query/profile/authorizedUserData.query';
 // import { useGetProfileAvatarQuery } from '@/query/profile/avatar.query';  /* image-сервис удален */
 import { useGetTweetHomeQuery } from '@/query/timeline/homeTweets.query';
 
 import InnerTweet from '@/components/inner/InnerTweet';
 import PageHeader from '@/components/headers/PageHeader';
-import Navigation from '@/components/navigation/Navigation';
 import News from '@/components/news/News';
 import UnderLine from '@/common/UnderLine';
 import WhoToFollow from '@/components/whoToFollow/WhoToFollow';
-import AccountMenu from '@/components/navigation/AccountMenu';
 import TweetAndRetweetList from '@/components/tweets/TweetAndRetweetList';
+import PageGridLeftSide from '@/modules/PageGridLeftSide';
 
 const HomePage: FC = () => {
   const theme = useTheme();
   const { ref, inView } = useInView()
   const { data, fetchNextPage, hasNextPage, isFetchingNextPage, isLoading, isError } = useGetTweetHomeQuery();
   // const { data: avatarUrl } = useGetProfileAvatarQuery();  /* image-сервис удален */
-  const { data: profileData, isLoading: profileDataIsLoading } = useGetAuthorizedUserDataQuery();
 
   useEffect(() => {
     if (!isLoading && inView) {
@@ -35,32 +31,7 @@ const HomePage: FC = () => {
       gap={{ xs: 'initial', sm: 1, md: 2, lg: 2 }}
       sx={{ justifyContent: 'center', flexWrap: 'nowrap' }}
     >
-      <Grid
-        className='view-home-menu'
-        item
-        sx={{
-          minWidth: { xs: '35px', sm: '35px', md: '200px', lg: '200px' },
-          position: 'relative',
-        }}
-      >
-        <Box sx={{
-          display: 'flex',
-          flexDirection: 'column',
-          justifyContent: 'space-between',
-          position: 'fixed',
-          height: '100vh',
-          width: 'inherit',
-          py: 1,
-        }}>
-          <Navigation plan='authorized' activeItem="Home" />
-          <AccountMenu
-            isLoading={profileDataIsLoading}
-            hasAvatar
-            isVertical
-            name={profileData && profileData.username}
-            tag={profileData && profileData.username} />
-        </Box>
-      </Grid>
+      <PageGridLeftSide pageName='Home' />
 
       <Grid
         className='view-home-content'

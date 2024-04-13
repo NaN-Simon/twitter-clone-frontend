@@ -2,7 +2,7 @@ import React, { FC, useRef, useState } from 'react';
 import { Box, Button, Container, Typography, useTheme } from '@mui/material';
 
 import InnerReply from '@/components/inner/InnerReply';
-import PopupReply from '@/components/popups/PopupReply';
+import Popup from '@/components/popups/Popup';
 
 import useHover from '@/hooks/useHover';
 
@@ -56,14 +56,14 @@ const ButtonReply: FC<IButtonReply> = ({ replies, replyToId, replyTo }) => {
       </Button>
 
       {isReplyPopupOpen && (
-        <PopupReply
+        <Popup
           sx={{ minWidth: { sx: 0, sm: '600px' } }}
           title="Retweet"
           openPopup={isReplyPopupOpen}
           setOpenPopup={setReplyPopupOpen}
         >
           <InnerReply replyToId={replyToId} onSubmitReply={onSubmitReply} />
-        </PopupReply>
+        </Popup>
       )}
     </Container>
   );
