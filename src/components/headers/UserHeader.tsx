@@ -6,12 +6,14 @@ interface IUserHeader {
   name: string;
   tag: string;
   isVerified?: boolean;
+  onClick?: (event: React.MouseEvent<HTMLElement>) => void; // Corrected type
 }
 
-const UserHeader: FC<IUserHeader> = ({ name, tag, isVerified }) => {
+const UserHeader: FC<IUserHeader> = ({ name, tag, isVerified, onClick }) => {
 
   return (
     <Container
+      onClick={onClick}
       disableGutters
       sx={{
         display: 'flex',
@@ -19,6 +21,7 @@ const UserHeader: FC<IUserHeader> = ({ name, tag, isVerified }) => {
         gap: 1,
         width: 'auto',
         m: 0,
+        cursor: 'pointer',
       }}
     >
       <Box

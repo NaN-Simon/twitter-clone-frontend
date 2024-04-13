@@ -1,4 +1,5 @@
 import React, { FC } from 'react';
+import { useRouter } from 'next/router'
 import { useGetAuthorizedUserDataQuery } from '@/query/profile/authorizedUserData.query';
 import { Box, Container, Typography, useTheme } from '@mui/material';
 import CustomAvatar from '@/components/avatar/CustomAvatar';
@@ -7,26 +8,19 @@ import PassedTime from '@/common/PassedTime';
 import RetweetSVG from '@/assets/icons/Retweet.svg';
 import TweetContent from './TweetContent';
 import TweetWidgets from './widgets/TweetWidgets';
-import { ITweet } from '@/types/tweets';
 import MoreActionButton from './widgets/buttons/ButtonMore';
-const Retweet: FC<ITweet> = ({
-  id,
-  isLiked,
-  isRetweeted,
-  isBelongs,
-  profile,
-  creationDate,
-  text,
-  // mediaUrls,
-  likes,
-  replies,
-  replyTo,
-  retweets,
-  retweetTo,
-  views,
-}) => {
+import { ITweet } from '@/types/tweets';
+const Retweet: FC<ITweet> = (props) => {
+  const { id, isLiked, isRetweeted, isBelongs, profile, creationDate, text, /* mediaUrls */ likes, replies, replyTo, retweets, retweetTo, views } = props
+
   const theme = useTheme();
   const { data: profileData } = useGetAuthorizedUserDataQuery();
+  const { push } = useRouter();
+
+  const redirect = (link: string) => {
+    push(`/user/${link}`)
+  }
+
   return (
     <Container
       className='retweet'
@@ -45,7 +39,11 @@ const Retweet: FC<ITweet> = ({
               </Typography>
             </Box>
             <Box sx={{ display: 'flex', justifyContent: 'start', textAlign: 'center', flexWrap: { xs: 'wrap', sm: 'nowrap' }, gap: '8px', }} >
-              <UserHeader name={profile.username} tag={profile.username} />
+              <UserHeader
+              onClick={()=>{redirect(profile.username)}}
+              name={profile.username}
+              tag={profile.username}
+              />
               <PassedTime date={creationDate} />
             </Box>
           </Box>

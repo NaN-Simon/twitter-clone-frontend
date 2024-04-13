@@ -1,4 +1,5 @@
 import React, { FC } from 'react';
+import { useRouter } from 'next/router'
 import { Box, Container } from '@mui/material';
 import CustomAvatar from '@/components/avatar/CustomAvatar';
 import UserHeader from '@/components/headers/UserHeader';
@@ -8,22 +9,14 @@ import MoreActionButton from '@/components/tweets/widgets/buttons/ButtonMore';
 import TweetWidgets from './widgets/TweetWidgets';
 import { ITweet } from '@/types/tweets';
 
-const Tweet: FC<ITweet> = ({
-  id,
-  isLiked,
-  isRetweeted,
-  isBelongs,
-  profile,
-  creationDate,
-  text,
-  // mediaUrls,
-  likes,
-  replies,
-  replyTo,
-  retweets,
-  retweetTo,
-  views,
-}) => {
+const Tweet: FC<ITweet> = (props) => {
+  console.log(props)
+  const { id, isLiked, isRetweeted, isBelongs, profile, creationDate, text, /* mediaUrls */ likes, replies, replyTo, retweets, retweetTo, views } = props
+  const { push } = useRouter();
+
+  const redirect = (link: string) => {
+    push(`/user/${link}`)
+  }
 
   return (
     <Container
@@ -40,7 +33,11 @@ const Tweet: FC<ITweet> = ({
       <Box sx={{ width: '100%' }}>
         <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
           <Box sx={{ display: 'flex', flexDirection: 'row', alignItems: 'center', flexWrap: { xs: 'wrap', sm: 'nowrap' }, gap: '8px' }} >
-            <UserHeader name={profile.username} tag={profile.username} />
+            <UserHeader
+            onClick={() => { redirect(profile.username) }}
+            name={profile.username}
+            tag={profile.username}
+            />
             <PassedTime date={creationDate} />
           </Box>
           {isBelongs && <MoreActionButton id={id} type={'tweet'} />}
@@ -57,7 +54,7 @@ const Tweet: FC<ITweet> = ({
         >
           <TweetContent
             text={text}
-            // mediaUrls={mediaUrls}
+          // mediaUrls={mediaUrls}
           />
           <TweetWidgets
             id={id}

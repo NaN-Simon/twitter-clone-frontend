@@ -1,4 +1,5 @@
 import React, { FC } from 'react';
+import { useRouter } from 'next/router'
 import { Box, Container, Paper, Typography, useTheme } from '@mui/material';
 import CustomAvatar from '@/components/avatar/CustomAvatar';
 import UserHeader from '@/components/headers/UserHeader';
@@ -39,6 +40,11 @@ const Reply: FC<IDataReply> = ({
   replyViews,
 }) => {
   const theme = useTheme();
+  const { push } = useRouter();
+
+  const redirect = (link: string) => {
+    push(`/user/${link}`)
+  }
 
   return (
     <Container
@@ -84,7 +90,10 @@ const Reply: FC<IDataReply> = ({
                 flexWrap: { xs: 'wrap', sm: 'nowrap' },
               }}
             >
-              <UserHeader name={replyProfile.username} tag={replyProfile.username} />
+              <UserHeader
+                onClick={() => { redirect(replyProfile.username) }}
+                name={replyProfile.username}
+                tag={replyProfile.username} />
               <PassedTime date={replyCreationDate} />
             </Box>
             {isBelongs && <MoreActionButton id={id} type={'reply'} />}
@@ -92,7 +101,7 @@ const Reply: FC<IDataReply> = ({
 
           <TweetContent
             text={replyTweetText}
-            // mediaUrls={replyMediaUrls}
+          // mediaUrls={replyMediaUrls}
           />
           <TweetWidgets
             id={replyId}
@@ -119,7 +128,11 @@ const Reply: FC<IDataReply> = ({
             }}
           >
             <Box display="flex" flexDirection="row">
-              <UserHeader name={profile.username} tag={profile.username} />
+              <UserHeader
+                onClick={() => { redirect(profile.username) }}
+                name={profile.username}
+                tag={profile.username}
+              />
               <PassedTime date={creationDate} />
             </Box>
             <Box display="flex" flexDirection="column" gap={1}>
@@ -138,7 +151,7 @@ const Reply: FC<IDataReply> = ({
 
               <TweetContent
                 text={text}
-                // mediaUrls={mediaUrls}
+              // mediaUrls={mediaUrls}
               />
             </Box>
             <TweetWidgets
