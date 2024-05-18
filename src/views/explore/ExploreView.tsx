@@ -4,7 +4,7 @@ import UnderLine from '@/common/UnderLine';
 import News from '@/components/news/News';
 import WhoToFollow from '@/components/whoToFollow/WhoToFollow';
 import Search from '@/components/search/Search';
-import PageGridLeftSide from '@/modules/PageGridLeftSide';
+import PageLeftSide from '@/modules/PageLeftSide';
 
 const ProfileView: FC = () => {
   const theme = useTheme();
@@ -16,7 +16,7 @@ const ProfileView: FC = () => {
       gap={{ xs: 'initial', sm: 1, md: 2, lg: 2 }}
       sx={{ justifyContent: 'center', flexWrap: 'nowrap' }}
     >
-      <PageGridLeftSide pageName='Explore' />
+      <PageLeftSide pageName='Explore' />
 
       <Grid item
         className='view-explore-content'

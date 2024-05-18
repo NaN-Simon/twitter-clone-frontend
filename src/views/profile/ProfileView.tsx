@@ -9,7 +9,7 @@ import UnderLine from '@/common/UnderLine';
 import WhoToFollow from '@/components/whoToFollow/WhoToFollow';
 import TweetTabPanel from './components/TweetTabPanel';
 import UserInfo from '../../components/userInfo/UserInfo';
-import PageGridLeftSide from '@/modules/PageGridLeftSide';
+import PageLeftSide from '@/modules/PageLeftSide';
 
 const ProfileView: FC = () => {
   const theme = useTheme();
@@ -22,7 +22,7 @@ const ProfileView: FC = () => {
       gap={{ xs: 1, sm: 1, md: 2, lg: 2 }}
       sx={{ justifyContent: 'center', flexWrap: 'nowrap' }}
     >
-      <PageGridLeftSide pageName='Profile' />
+      <PageLeftSide pageName='Profile' />
 
       <Grid
         className='view-profile-content'

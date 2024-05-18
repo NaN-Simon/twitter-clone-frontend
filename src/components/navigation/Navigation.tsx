@@ -21,14 +21,14 @@ const Navigation: FC<INavigation> = ({ plan = 'unauthorized', activeItem }) => {
       role="navigation"
       component="nav"
       sx={{
-        minWidth: '50px',
+        // minWidth: '50px',
         width: 'fit-content',
         background: theme.palette.primary.light,
         boxShadow: 'none',
         position: 'relative',
         display: 'flex',
         flexDirection: 'column',
-        alignItems: 'start',
+        alignItems: {xs: 'center', md: 'start'},
         gap: 3
       }}
     >

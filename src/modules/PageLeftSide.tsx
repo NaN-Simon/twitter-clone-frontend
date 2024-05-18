@@ -1,27 +1,40 @@
+import React, { FC, useState } from 'react'
+
 import InnerTweet from '@/components/inner/InnerTweet'
 import AccountMenu from '@/components/navigation/AccountMenu'
 import Navigation from '@/components/navigation/Navigation'
 import Popup from '@/components/popups/Popup'
-import { useGetAuthorizedUserDataQuery } from '@/query/profile/authorizedUserData.query'
-import theme from '@/theme/theme'
-import { Grid, Box, Button } from '@mui/material'
-import React, { FC, useState } from 'react'
 
-interface IPageGridLeftSide {
+import { Box, Button, Container } from '@mui/material'
+
+import { useGetAuthorizedUserDataQuery } from '@/query/profile/authorizedUserData.query'
+
+import theme from '@/theme/theme'
+
+import LogoSVG from '@/assets/icons/Logo.svg';
+
+interface IPageLeftSide {
   pageName: string
 }
 
-const PageGridLeftSide: FC<IPageGridLeftSide> = ({ pageName }) => {
+const PageLeftSide: FC<IPageLeftSide> = ({ pageName }) => {
   const { data: profileData, isLoading: profileDataIsLoading } = useGetAuthorizedUserDataQuery();
   const [isPopupOpen, setIsPopupOpen] = useState(false);
 
   return (
-    <Grid
+    <Container
       aria-label='grid-left-side'
-      item
       sx={{
         minWidth: { xs: '35px', sm: '35px', md: '200px', lg: '200px' },
+        width: 'auto',
         position: 'relative',
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'space-between',
+        alignItems: 'center',
+        height: '100vh',
+        margin: '0',
+        padding: '10px 0',
       }}
     >
       <Box
@@ -40,6 +53,7 @@ const PageGridLeftSide: FC<IPageGridLeftSide> = ({ pageName }) => {
           sx={{
             display: 'flex',
             flexDirection: 'column',
+            alignItems: 'center',
             gap: 3
           }}>
           <Navigation plan='authorized' activeItem={pageName} />
@@ -64,8 +78,13 @@ const PageGridLeftSide: FC<IPageGridLeftSide> = ({ pageName }) => {
               },
             }}
           >
-            <Box>P</Box>
-            <Box sx={{ display: { xs: 'none', md: 'inline' } }}>ost</Box>
+            <Box sx={{ display: { xs: 'inline', md: 'none' } }}>
+              <LogoSVG
+                width="20"
+                height="20"
+              />
+            </Box>
+            <Box sx={{ display: { xs: 'none', md: 'inline' } }}>Post</Box>
           </Button>
           {isPopupOpen && (
             <Popup
@@ -86,8 +105,8 @@ const PageGridLeftSide: FC<IPageGridLeftSide> = ({ pageName }) => {
           name={profileData && profileData.username}
           tag={profileData && profileData.username} />
       </Box>
-    </Grid>
+    </Container>
   )
 }
 
-export default PageGridLeftSide
+export default PageLeftSide

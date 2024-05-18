@@ -10,7 +10,7 @@ import News from '@/components/news/News';
 import UnderLine from '@/common/UnderLine';
 import WhoToFollow from '@/components/whoToFollow/WhoToFollow';
 import TweetAndRetweetList from '@/components/tweets/TweetAndRetweetList';
-import PageGridLeftSide from '@/modules/PageGridLeftSide';
+import PageLeftSide from '@/modules/PageLeftSide';
 
 const HomePage: FC = () => {
   const theme = useTheme();
@@ -31,7 +31,7 @@ const HomePage: FC = () => {
       gap={{ xs: 'initial', sm: 1, md: 2, lg: 2 }}
       sx={{ justifyContent: 'center', flexWrap: 'nowrap' }}
     >
-      <PageGridLeftSide pageName='Home' />
+      <PageLeftSide pageName='Home' />
 
       <Grid
         className='view-home-content'
