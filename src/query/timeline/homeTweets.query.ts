@@ -8,7 +8,7 @@ export const useGetTweetHomeQuery = () => {
     queryKey: 'homeTweets',
     queryFn: ({ pageParam = 0 }) => getHomeTweets(pageParam),
     getNextPageParam: (lastPage, pages: IDataTweet[]) => {
-      if (lastPage.length === 5) {
+      if (lastPage.length === 1) {
         return pages.length
       } else {
         return false

@@ -19,10 +19,10 @@ const HomePage: FC = () => {
   // const { data: avatarUrl } = useGetProfileAvatarQuery();  /* image-сервис удален */
 
   useEffect(() => {
-    if (!isLoading && inView) {
+    if (inView) {
       fetchNextPage()
     }
-  }, [fetchNextPage, inView, isLoading])
+  }, [inView])
 
   return (
     <Grid
@@ -50,12 +50,12 @@ const HomePage: FC = () => {
 
         <Box width='100%' textAlign='center'> {isLoading && <CircularProgress sx={{ m: 1 }} />} </Box>
         {isError && (<Alert severity="error">Ошибка загрузки постов user</Alert>)}
-        {data && data.pages.map((page, index: number) => {
+        {data?.pages.map((page, index: number) => {
           // console.log('page', page);
           return (
-          <React.Fragment key={index}>
+          <div id={page.id} key={index}>
             <TweetAndRetweetList tweets={page || []} />
-          </React.Fragment>
+          </div>
         )})}
         {hasNextPage && (
           <Button sx={{ width: '100%' }} ref={ref} onClick={() => fetchNextPage()} disabled={isFetchingNextPage}>
