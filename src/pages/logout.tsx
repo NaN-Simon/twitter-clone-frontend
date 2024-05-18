@@ -8,7 +8,7 @@ const Logout = () => {
   return (
     <>
       <DefaultSeo title="Welcome in to Twitter" {...SEO} />
-      <Container className='page-logout' disableGutters>
+      <Container aria-label='page-logout' disableGutters>
         <LogoutView />
       </Container>
     </>

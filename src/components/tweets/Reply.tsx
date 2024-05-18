@@ -1,53 +1,25 @@
 import React, { FC } from 'react';
-import { useRouter } from 'next/router'
-import { Box, Container, Paper, Typography, useTheme } from '@mui/material';
+import { Box, Container, Paper, useTheme } from '@mui/material';
 import CustomAvatar from '@/components/avatar/CustomAvatar';
-import UserHeader from '@/components/headers/UserHeader';
-import PassedTime from '@/common/PassedTime';
 import TweetContent from './TweetContent';
 import { IDataReply } from '../../types/tweets';
-import TweetWidgets from './widgets/TweetWidgets';
-import TaggedText from '@/common/TaggedText';
-import MoreActionButton from './widgets/buttons/ButtonMore';
-const Reply: FC<IDataReply> = ({
-  id,
-  isLiked,
-  isRetweeted,
-  isBelongs,
-  // mediaUrls,
-  likes,
-  replies,
-  replyTo,
-  retweets,
-  retweetTo,
-  views,
-  profile,
-  creationDate,
-  text,
-  replyId,
-  replyIsLiked,
-  replyIsRetweeted,
-  // replyIsBelongs,
-  replyProfile,
-  replyCreationDate,
-  replyTweetText,
-  // replyMediaUrls,
-  replyLikes,
-  replyReplies,
-  replyReplyTo,
-  replyRetweets,
-  replyRetweetTo,
-  replyViews,
-}) => {
-  const theme = useTheme();
-  const { push } = useRouter();
+import QuotedUser from '@/common/QuotedUser';
+import ButtonLike from './widgets/buttons/ButtonLike';
+import ButtonReply from './widgets/buttons/ButtonReply';
+import ButtonRetweet from './widgets/buttons/ButtonRetweet';
+import ButtonShare from './widgets/buttons/ButtonShare';
+import ButtonViews from './widgets/buttons/ButtonViews';
+import UserHeaderTweet from './components/UserHeaderTweet';
+const Reply: FC<IDataReply> = (props) => {
+  const { id, isLiked, isRetweeted, isBelongs, /* mediaUrls, */ likes, replies, replyTo, retweets, retweetTo, views, profile, creationDate, text, replyId, replyIsLiked, replyIsRetweeted, replyIsBelongs, replyProfile, replyCreationDate, replyTweetText, /* replyMediaUrls, */ replyLikes, replyReplies, replyReplyTo, replyRetweets, replyRetweetTo, replyViews } = props
+  const { username } = profile
+  const { username: replyUsername } = replyProfile
 
-  const redirect = (link: string) => {
-    push(`/user/${link}`)
-  }
+  const theme = useTheme();
 
   return (
     <Container
+      aria-label='reply'
       className='reply'
       disableGutters
       sx={{
@@ -57,6 +29,7 @@ const Reply: FC<IDataReply> = ({
         padding: '10px 15px',
       }}
     >
+      {/* Новый твит */}
       <Box sx={{ display: 'flex', flexDirection: 'row', gap: 2 }}>
         <Box position="relative">
           <CustomAvatar src={null} />
@@ -80,44 +53,38 @@ const Reply: FC<IDataReply> = ({
             width: '100%',
           }}
         >
-          <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
-            <Box
-              sx={{
-                display: 'flex',
-                justifyContent: 'start',
-                textAlign: 'center',
-                gap: 1,
-                flexWrap: { xs: 'wrap', sm: 'nowrap' },
-              }}
-            >
-              <UserHeader
-                onClick={() => { redirect(replyProfile.username) }}
-                name={replyProfile.username}
-                tag={replyProfile.username} />
-              <PassedTime date={replyCreationDate} />
-            </Box>
-            {isBelongs && <MoreActionButton id={id} type={'reply'} />}
-          </Box>
+          <UserHeaderTweet id={replyId} username={replyUsername} creationDate={replyCreationDate} isBelongs={replyIsBelongs} type='tweet' disableMoreActionButton />
 
           <TweetContent
             text={replyTweetText}
           // mediaUrls={replyMediaUrls}
           />
-          <TweetWidgets
-            id={replyId}
-            isLiked={replyIsLiked}
-            isRetweeted={replyIsRetweeted}
-            likes={replyLikes}
-            replies={replyReplies}
-            replyTo={replyReplyTo}
-            retweets={replyRetweets}
-            retweetTo={replyRetweetTo}
-            views={replyViews}
-          />
+          <Container
+            className='component-tweet-widgets'
+            disableGutters
+            sx={{
+              display: 'flex',
+              flexDirection: 'raw',
+              flexWrap: 'wrap',
+              justifyContent: 'space-between',
+              alignItems: 'center'
+            }}
+          >
+            <ButtonReply replyTo={replyReplyTo} replyToId={replyId} replies={replyReplies} />
+            <ButtonRetweet id={replyId} isRetweeted={replyIsRetweeted} retweets={replyRetweets} retweetTo={replyRetweetTo} />
+            <ButtonLike id={replyId} likes={replyLikes} isLiked={replyIsLiked} />
+            <ButtonViews views={replyViews} />
+            <ButtonShare id={replyId} />
+          </Container>
         </Box>
       </Box>
-      <Box>
-        <Box display="flex" flexDirection="row" gap={2}>
+      {/* Цитируемый твит */}
+      <Box sx={{
+        display: 'flex',
+        justifyContent: 'end',
+        width: '100%'
+      }}>
+        <Box display="flex" flexDirection="row" gap={2} sx={{ width: '98%' }}>
           <CustomAvatar src={null} />
           <Box
             sx={{
@@ -127,44 +94,31 @@ const Reply: FC<IDataReply> = ({
               width: '100%',
             }}
           >
-            <Box display="flex" flexDirection="row">
-              <UserHeader
-                onClick={() => { redirect(profile.username) }}
-                name={profile.username}
-                tag={profile.username}
-              />
-              <PassedTime date={creationDate} />
-            </Box>
+            <UserHeaderTweet id={id} username={username} creationDate={creationDate} isBelongs={isBelongs} type='reply' />
             <Box display="flex" flexDirection="column" gap={1}>
-              <Box display="flex" flexDirection="row" gap={0.5}>
-                <Typography
-                  variant="h6"
-                  color="secondary.main"
-                  display="flex"
-                  flexDirection="row"
-                  gap={0.5}
-                >
-                  Replying to
-                </Typography>
-                <TaggedText color="tag.main" tagSymbol="@" text={replyProfile.username} />
-              </Box>
-
+              <QuotedUser username={replyProfile.username} />
               <TweetContent
                 text={text}
               // mediaUrls={mediaUrls}
               />
             </Box>
-            <TweetWidgets
-              id={id}
-              isLiked={isLiked}
-              isRetweeted={isRetweeted}
-              likes={likes}
-              replies={replies}
-              replyTo={replyTo}
-              retweets={retweets}
-              retweetTo={retweetTo}
-              views={views}
-            />
+            <Container
+              className='component-tweet-widgets'
+              disableGutters
+              sx={{
+                display: 'flex',
+                flexDirection: 'row',
+                flexWrap: 'wrap',
+                justifyContent: 'space-between',
+                alignItems: 'center'
+              }}
+            >
+              <ButtonReply replayHeader={<UserHeaderTweet id={replyId} username={replyUsername} creationDate={replyCreationDate} isBelongs={replyIsBelongs} type='tweet' disableMoreActionButton />} quotedUser={<QuotedUser username={replyUsername} />} replyTo={replyTo} replyToId={replyId} replies={replies} replyingText={text} />
+              <ButtonRetweet id={id} isRetweeted={isRetweeted} retweets={retweets} retweetTo={retweetTo} />
+              <ButtonLike id={id} likes={likes} isLiked={isLiked} />
+              <ButtonViews views={views} />
+              <ButtonShare id={id} />
+            </Container>
           </Box>
         </Box>
       </Box>

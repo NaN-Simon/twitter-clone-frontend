@@ -17,9 +17,9 @@ const ProfileView: FC = () => {
 
   return (
     <Grid
-      className='view-profile'
+      aria-label='view-profile'
       container
-      gap={{ xs: 'initial', sm: 1, md: 2, lg: 2 }}
+      gap={{ xs: 1, sm: 1, md: 2, lg: 2 }}
       sx={{ justifyContent: 'center', flexWrap: 'nowrap' }}
     >
       <PageGridLeftSide pageName='Profile' />

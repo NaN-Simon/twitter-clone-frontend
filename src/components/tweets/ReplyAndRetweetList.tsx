@@ -3,8 +3,9 @@ import { Box, Container } from '@mui/material';
 import UnderLine from '@/common/UnderLine';
 import Reply from './Reply';
 import { IDataReplies, IDataTweet } from '../../types/tweets';
+import Retweet from './Retweet';
 
-const ReplyList: FC<IDataReplies> = ({ replies }, index) => {
+const ReplyAndRetweetList: FC<IDataReplies> = ({ replies }) => {
   console.log(replies);
 
   return (
@@ -32,11 +33,16 @@ const ReplyList: FC<IDataReplies> = ({ replies }, index) => {
               replyViews={reply.replyTo.views}
             />
           )}
-          {replies && replies.length - 1 != index && <UnderLine />}
+          {reply.retweetTo && (
+            <Retweet
+              {...reply.retweetTo}
+            />
+          )}
+          <UnderLine />
         </Box>
       ))}
     </Container>
   );
 };
 
-export default ReplyList;
+export default ReplyAndRetweetList;

@@ -35,6 +35,9 @@ export type ITweetWidgets = {
   retweets: number
   retweetTo: IDataRetweetTo | null
   views: number
+  replyingText?: string
+  replayHeader?: IUserHeaderTweet
+  quotedUser?: IQuotedUser
 }
 
 export type IDataTweets = {
@@ -115,3 +118,16 @@ export type IDataReply = {
   // replyMediaUrls?: string[]
   replyCreationDate: string
 } & ITweet
+
+export interface IUserHeaderTweet {
+  id: number;
+  username: string;
+  creationDate: string
+  isBelongs: boolean;
+  type: 'tweet' | 'retweet' | 'reply'
+  disableMoreActionButton?: boolean;
+ }
+
+ export interface IQuotedUser {
+   username: string
+ }

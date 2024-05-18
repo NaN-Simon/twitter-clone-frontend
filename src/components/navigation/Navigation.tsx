@@ -21,6 +21,7 @@ const Navigation: FC<INavigation> = ({ plan = 'unauthorized', activeItem }) => {
       role="navigation"
       component="nav"
       sx={{
+        minWidth: '50px',
         width: 'fit-content',
         background: theme.palette.primary.light,
         boxShadow: 'none',

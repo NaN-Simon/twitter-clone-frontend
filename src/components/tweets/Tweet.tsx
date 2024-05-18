@@ -1,22 +1,19 @@
 import React, { FC } from 'react';
-import { useRouter } from 'next/router'
 import { Box, Container } from '@mui/material';
 import CustomAvatar from '@/components/avatar/CustomAvatar';
-import UserHeader from '@/components/headers/UserHeader';
-import PassedTime from '@/common/PassedTime';
 import TweetContent from './TweetContent';
-import MoreActionButton from '@/components/tweets/widgets/buttons/ButtonMore';
-import TweetWidgets from './widgets/TweetWidgets';
 import { ITweet } from '@/types/tweets';
+import UserHeaderTweet from './components/UserHeaderTweet';
+import QuotedUser from '@/common/QuotedUser';
+import ButtonLike from './widgets/buttons/ButtonLike';
+import ButtonReply from './widgets/buttons/ButtonReply';
+import ButtonRetweet from './widgets/buttons/ButtonRetweet';
+import ButtonShare from './widgets/buttons/ButtonShare';
+import ButtonViews from './widgets/buttons/ButtonViews';
 
 const Tweet: FC<ITweet> = (props) => {
-  console.log(props)
   const { id, isLiked, isRetweeted, isBelongs, profile, creationDate, text, /* mediaUrls */ likes, replies, replyTo, retweets, retweetTo, views } = props
-  const { push } = useRouter();
-
-  const redirect = (link: string) => {
-    push(`/user/${link}`)
-  }
+  const { username } = profile
 
   return (
     <Container
@@ -31,17 +28,7 @@ const Tweet: FC<ITweet> = (props) => {
     >
       <CustomAvatar src={null} />
       <Box sx={{ width: '100%' }}>
-        <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
-          <Box sx={{ display: 'flex', flexDirection: 'row', alignItems: 'center', flexWrap: { xs: 'wrap', sm: 'nowrap' }, gap: '8px' }} >
-            <UserHeader
-            onClick={() => { redirect(profile.username) }}
-            name={profile.username}
-            tag={profile.username}
-            />
-            <PassedTime date={creationDate} />
-          </Box>
-          {isBelongs && <MoreActionButton id={id} type={'tweet'} />}
-        </Box>
+        <UserHeaderTweet id={id} username={username} creationDate={creationDate} isBelongs={isBelongs} type='tweet' />
         <Box
           sx={{
             m: 0,
@@ -56,17 +43,23 @@ const Tweet: FC<ITweet> = (props) => {
             text={text}
           // mediaUrls={mediaUrls}
           />
-          <TweetWidgets
-            id={id}
-            isLiked={isLiked}
-            isRetweeted={isRetweeted}
-            likes={likes}
-            replies={replies}
-            replyTo={replyTo}
-            retweets={retweets}
-            retweetTo={retweetTo}
-            views={views}
-          />
+          <Container
+            className='component-tweet-widgets'
+            disableGutters
+            sx={{
+              display: 'flex',
+              flexDirection: 'raw',
+              flexWrap: 'wrap',
+              justifyContent: 'space-between',
+              alignItems: 'center'
+            }}
+          >
+            <ButtonReply replayHeader={<UserHeaderTweet id={id} username={username} creationDate={creationDate} isBelongs={isBelongs} type='tweet' disableMoreActionButton />} quotedUser={<QuotedUser username={username} />} replyTo={replyTo} replyToId={id} replies={replies} replyingText={text} />
+            <ButtonRetweet id={id} isRetweeted={isRetweeted} retweets={retweets} retweetTo={retweetTo} />
+            <ButtonLike id={id} likes={likes} isLiked={isLiked} />
+            <ButtonViews views={views} />
+            <ButtonShare id={id} />
+          </Container>
         </Box>
       </Box>
     </Container>

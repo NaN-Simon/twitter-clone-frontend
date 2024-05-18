@@ -8,7 +8,7 @@ import useHover from '@/hooks/useHover';
 
 import ReplySVG from '@/assets/icons/Reply.svg';
 
-import { IDataReplyTo } from '../../../../types/tweets';
+import { IDataReplyTo, IQuotedUser, IUserHeaderTweet } from '../../../../types/tweets';
 
 import styles from './WidgetButton.module.css'
 
@@ -16,10 +16,12 @@ interface IButtonReply {
   replies: number;
   replyToId: number;
   replyTo: IDataReplyTo | null
+  replyingText?: string
+  replayHeader?: React.ReactElement<IUserHeaderTweet>;
+  quotedUser?: React.ReactElement<IQuotedUser>;
 }
 
-const ButtonReply: FC<IButtonReply> = ({ replies, replyToId, replyTo }) => {
-  /* TODO replyTo */
+const ButtonReply: FC<IButtonReply> = ({ replies, replyToId, /* replyTo, */ replyingText, replayHeader, quotedUser }) => {
   const theme = useTheme();
   const ref = useRef(null);
   const isHovering = useHover(ref)
@@ -58,10 +60,15 @@ const ButtonReply: FC<IButtonReply> = ({ replies, replyToId, replyTo }) => {
       {isReplyPopupOpen && (
         <Popup
           sx={{ minWidth: { sx: 0, sm: '600px' } }}
-          title="Retweet"
+          title="Reply"
           openPopup={isReplyPopupOpen}
           setOpenPopup={setReplyPopupOpen}
         >
+          {replayHeader}
+          <Typography variant="h5" fontWeight={500} color="buttonWidget.main" sx={{ mb: 1 }}>
+            {replyingText}
+          </Typography>
+          {quotedUser}
           <InnerReply replyToId={replyToId} onSubmitReply={onSubmitReply} />
         </Popup>
       )}

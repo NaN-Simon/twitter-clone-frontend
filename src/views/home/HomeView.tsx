@@ -50,11 +50,13 @@ const HomePage: FC = () => {
 
         <Box width='100%' textAlign='center'> {isLoading && <CircularProgress sx={{ m: 1 }} />} </Box>
         {isError && (<Alert severity="error">Ошибка загрузки постов user</Alert>)}
-        {data && data.pages.map((page, index: number) => (
+        {data && data.pages.map((page, index: number) => {
+          // console.log('page', page);
+          return (
           <React.Fragment key={index}>
             <TweetAndRetweetList tweets={page || []} />
           </React.Fragment>
-        ))}
+        )})}
         {hasNextPage && (
           <Button sx={{ width: '100%' }} ref={ref} onClick={() => fetchNextPage()} disabled={isFetchingNextPage}>
             {isFetchingNextPage ? 'Loading more...' : 'Load More'}

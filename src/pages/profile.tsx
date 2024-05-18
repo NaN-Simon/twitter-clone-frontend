@@ -17,7 +17,13 @@ const Profile = () => {
   return (
     <>
       <DefaultSeo title="Profile" {...SEO} />
-      <Container  className='page-profile' disableGutters>
+      <Container 
+      aria-label='page-profile' 
+      disableGutters
+      sx={{
+        maxWidth: { xs: '100%', sm: '100%', md: '100%', lg: '100%' },
+      }}
+      >
         <ProfileView />
       </Container>
     </>

@@ -17,7 +17,7 @@ const Profile = () => {
   return (
     <>
       <DefaultSeo title="Explore" {...SEO} />
-      <Container  className='page-explore' disableGutters>
+      <Container  aria-label='page-explore' disableGutters>
         <ExploreView />
       </Container>
     </>

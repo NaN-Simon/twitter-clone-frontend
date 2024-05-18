@@ -19,11 +19,13 @@ const PanelTweets = () => {
     <Container disableGutters>
       <Box width='100%' textAlign='center'> {isLoading && <CircularProgress sx={{ m: 1 }} />} </Box>
       {isError && (<Alert severity="error">Ошибка загрузки постов user</Alert>)}
-      {data && data.pages.map((page, index: number) => (
-        <React.Fragment key={index}>
+      {data && data.pages.map((page, index: number) => {
+        // console.log('page', page);
+        return (
+        <div id={page.id} key={index}>
           <TweetAndRetweetList tweets={page || []} />
-        </React.Fragment>
-      ))}
+        </div>
+      )})}
 
       {hasNextPage && (
         <Button sx={{width: '100%'}} ref={ref} onClick={() => fetchNextPage()} disabled={isFetchingNextPage}>
