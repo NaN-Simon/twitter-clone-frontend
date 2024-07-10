@@ -8,10 +8,12 @@ import { check } from '../api/authCheck';
 import ProfileView from '@/views/profile/ProfileView';
 
 const Profile = () => {
+  const isMock = process.env.isMock
+
   const { push } = useRouter();
 
   useEffect(() => {
-    check().then((res) => !res && push('/logout'));
+    !isMock && check().then((res) => !res && push('/logout'));
   }, [push]);
 
   return (

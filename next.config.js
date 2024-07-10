@@ -18,6 +18,9 @@ const nextConfig = {
   images: {
     domains: ['twitter-clone-storages.s3.amazonaws.com'],
   },
+  env: {
+    isMock: true,
+  }
 }
 
 const withReactSvg = require('next-react-svg')(nextReactSvgConfig);

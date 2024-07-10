@@ -3,7 +3,13 @@ import { PROFILE_AVATAR_GET, PROFILE_AVATAR_POST, PROFILE_USERS_LIST_GET, PROFIL
 } from '../config'
 import { IChangeInfoRequest, ISearchQueryData } from '../types'
 
+import profileMock from '../../config/mock/profile.mock.json'
+import exploreMock from '../../config/mock/explore.mock.json'
+
+const isMock = process.env.isMock
+
 export const getAuthorizedUserData = async () => {
+  if(isMock) return profileMock
   const response = await api.get(PROFILE_ME_BIO)
   return response
 }
@@ -38,6 +44,8 @@ export const getProfileBanner = async () => {
 }
 
 export const getUsersList = async (pageable: ISearchQueryData) => {
+  if(isMock) return exploreMock
+
   const username = await pageable.username
   const size = await pageable.size
   const page = await pageable.page

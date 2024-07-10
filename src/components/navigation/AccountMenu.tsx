@@ -83,6 +83,7 @@ const AccountMenu: FC<IAccountMenu> = (props) => {
         }}
         sx={{
           '& .MuiMenu-paper': {
+            bgcolor: 'background.default',
             top: '740px!important',
           }
         }}

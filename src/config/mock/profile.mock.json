@@ -1,0 +1,16 @@
+{
+  "data": {
+    "profileId": "64d8ef16d9ca5115663f0004",
+    "username": "Tony Stark",
+    "email": "hetakav573@royalka.com",
+    "followers": 3,
+    "followees": 5,
+    "joinDate": "2023-08-13",
+    "bio": "Frontend Developer",
+    "location": "Earth",
+    "website": "",
+    "birthDate": null,
+    "avatarUrl": "https://via.placeholder.com/600/56a8c2",
+    "bannerUrl": "https://api.slingacademy.com/public/sample-photos/2.jpeg"
+  }
+}

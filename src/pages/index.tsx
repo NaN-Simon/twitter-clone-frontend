@@ -8,10 +8,12 @@ import { Container } from '@mui/material';
 import { check } from '../api/authCheck';
 
 const Home = () => {
+  const isMock = process.env.isMock
+
   const { push } = useRouter();
 
   useEffect(() => {
-    check().then((res) => !res && push('/logout'));
+    !isMock && check().then((res) => !res && push('/logout'));
   }, [push]);
 
   return (
