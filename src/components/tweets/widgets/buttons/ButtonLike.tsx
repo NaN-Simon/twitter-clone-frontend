@@ -48,7 +48,8 @@ const ButtonLike: FC<IButtonLike> = ({ id, likes, isLiked }) => {
       ref={ref}
       className={styles['button-container']}
       sx={{
-        fontFamily: theme.typography.button.fontFamily
+        fontFamily: theme.typography.button.fontFamily,
+        // bgcolor: 'red',
       }}
     >
 
@@ -57,12 +58,15 @@ const ButtonLike: FC<IButtonLike> = ({ id, likes, isLiked }) => {
       </Box>}
 
       <ToggleButton
+        textAria-label="toggleButton"
         value="check"
         selected={isLiked}
         onChange={onChange}
         className={styles['button']}
+        sx={{
+          border: '1px solid none!important',
+        }}
       >
-
         <Box
           sx={{
             display: 'flex',
