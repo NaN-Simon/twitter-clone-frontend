@@ -64,7 +64,13 @@ const ButtonLike: FC<IButtonLike> = ({ id, likes, isLiked }) => {
         onChange={onChange}
         className={styles['button']}
         sx={{
-          border: '1px solid none!important',
+          '& .MuiButtonBase-root-MuiToggleButton-root': {
+            border: 'node!important',
+          },
+          border: 'none!important',
+          '&:hover': {
+            color: selectedColor
+          },
         }}
       >
         <Box
