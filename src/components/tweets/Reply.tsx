@@ -108,7 +108,7 @@ const Reply: FC<IDataReply> = (props) => {
               sx={{
                 display: 'flex',
                 flexDirection: 'row',
-                flexWrap: 'wrap',
+                // flexWrap: 'wrap',
                 justifyContent: 'space-between',
                 alignItems: 'center'
               }}

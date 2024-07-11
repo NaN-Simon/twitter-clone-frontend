@@ -59,7 +59,7 @@ const Retweet: FC<ITweet> = (props) => {
             sx={{
               display: 'flex',
               flexDirection: 'raw',
-              flexWrap: 'wrap',
+              // flexWrap: 'wrap',
               justifyContent: 'space-between',
               alignItems: 'center'
             }}
