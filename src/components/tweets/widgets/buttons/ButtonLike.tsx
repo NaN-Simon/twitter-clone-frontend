@@ -58,7 +58,6 @@ const ButtonLike: FC<IButtonLike> = ({ id, likes, isLiked }) => {
       </Box>}
 
       <ToggleButton
-        textAria-label="toggleButton"
         value="check"
         selected={isLiked}
         onChange={onChange}

@@ -1,15 +1,11 @@
 import React, { FC } from 'react';
 import { useRouter } from 'next/router';
 import { Box, Button, CircularProgress, Menu, MenuItem, Typography } from '@mui/material';
+import AccountMini from './AccountMini';
 
 // import { useGetProfileAvatarQuery } from '@/query/profile/avatar.query'; /* image-сервис удален */
 import { useLogoutQuery } from '@/query/authorization/authorization.query';
 
-import CustomAvatar from '@/components/avatar/CustomAvatar';
-
-import TaggedText from '@/common/TaggedText';
-
-import VerifiedIcon from '@/components/UI/icon/VerifiedIcon';
 
 interface IAccountMenu {
   name?: string;
@@ -38,39 +34,17 @@ const AccountMenu: FC<IAccountMenu> = (props) => {
   if (!name || !tag) return (<></>)
 
   return (
-    <Button aria-label="Account menu" onClick={handleClick} >
-      {/* имя и тэг пользователя, всплывающее меню */}
-      <Box
+    <Box className="account-menu"  >
+
+      <Button
         id="basic-button"
         aria-controls={open ? 'basic-menu' : undefined}
         aria-haspopup="true"
         aria-expanded={open ? 'true' : undefined}
-        sx={{
-          display: 'flex',
-          flexDirection: 'row',
-          gap: 1,
-          m: 0,
-          p: 0,
-          minWidth: 'auto'
-        }}
+        onClick={handleClick}
       >
-        {/* отображение аватара или бланка */}
-        {hasAvatar && <CustomAvatar src={null} width={30} height={30} />}
-        <Box
-          sx={{
-            display: { xs: 'none', md: 'flex', lg: 'flex' },
-            flexDirection: isVertical ? 'column' : 'row',
-            alignItems: isVertical ? 'start' : 'center',
-            gap: '0 8px',
-          }}
-        >
-          <Box sx={{ display: 'flex', gap: '8px' }}>
-            <Typography variant="h5" fontWeight={700}> {name} </Typography>
-            {isVerified && <VerifiedIcon />}
-          </Box>
-          <TaggedText color="tag.contrastText" tagSymbol="@" text={tag} />
-        </Box>
-      </Box>
+        <AccountMini name={name} tag={tag} hasAvatar={hasAvatar} isVerified={isVerified} isVertical={isVertical} />
+      </Button>
 
       <Menu
         disableScrollLock
@@ -92,16 +66,10 @@ const AccountMenu: FC<IAccountMenu> = (props) => {
           <span>JWT: </span>
           <input type="text" defaultValue={localStorage.getItem('auth-token') || 'notJWT'} />
         </MenuItem>
-        <MenuItem onClick={() => {
-          handleClose();
-          push('/profile')
-        }}>Profile</MenuItem>
-        <MenuItem onClick={() => {
-          handleClose();
-          logout(); push('/logout')
-        }}>Logout</MenuItem>
+        <MenuItem onClick={() => { handleClose(); push('/profile') }}>Profile</MenuItem>
+        <MenuItem onClick={() => { handleClose(); logout(); push('/logout') }}>Logout</MenuItem>
       </Menu>
-    </Button>
+    </Box>
   );
 };
 
