@@ -2,7 +2,7 @@
 
 **Name**: TwitterClone
 
-**Demo**: [TwitterClone](https://twitter-clone-frontend-bd7qoxpud-nan-simons-projects.vercel.app/)
+**Demo**: [TwitterClone](https://twitter-clone-frontend-eta.vercel.app/)
 
 **Build**: React, NextJS, Typescript, react-query
 
